@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kuis TKA Try Out 3 – Bahasa Indonesia &amp; Matematika (60 Soal)</title>
+<style>
+:root{
+  --bg:#f5f6fa; --card:#ffffff; --text:#1d2433; --muted:#5d667a; --border:#dde1ec;
+  --accent:#3b4ccf; --accent-soft:#e8ebff; --ok:#12805c; --ok-soft:#dff5ec;
+  --bad:#c0362c; --bad-soft:#fde8e6; --warn:#a15c00; --warn-soft:#fff1d6;
+  --fig:#eef3fb; --fig-border:#bcd0ee;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#12151d; --card:#1b2030; --text:#e8ebf4; --muted:#9aa3b8; --border:#2c3347;
+    --accent:#8c9bff; --accent-soft:#252c52; --ok:#4cd6a0; --ok-soft:#14352b;
+    --bad:#ff8a80; --bad-soft:#3d1f1d; --warn:#ffc266; --warn-soft:#3a2d12;
+    --fig:#1a2438; --fig-border:#34476b;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12151d; --card:#1b2030; --text:#e8ebf4; --muted:#9aa3b8; --border:#2c3347;
+  --accent:#8c9bff; --accent-soft:#252c52; --ok:#4cd6a0; --ok-soft:#14352b;
+  --bad:#ff8a80; --bad-soft:#3d1f1d; --warn:#ffc266; --warn-soft:#3a2d12;
+  --fig:#1a2438; --fig-border:#34476b;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px);height:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.6;font-size:16px;min-height:100%}
+.wrap{max-width:820px;margin:0 auto;padding:12px 14px 80px}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--card);border-bottom:1px solid var(--border);padding:8px 14px}
+.top-in{max-width:820px;margin:0 auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.top-in .ttl{font-weight:700;font-size:.95rem;flex:1 1 180px}
+.prog{flex:1 1 160px;min-width:140px}
+.prog small{color:var(--muted);display:block;font-size:.78rem}
+.bar{height:6px;background:var(--border);border-radius:99px;overflow:hidden}
+.bar>i{display:block;height:100%;width:0;background:var(--accent);transition:width .2s}
+button{font:inherit;cursor:pointer}
+.btn{border:1px solid var(--accent);background:var(--accent);color:#fff;border-radius:10px;padding:8px 16px;font-weight:600}
+.btn.alt{background:transparent;color:var(--accent)}
+.btn.small{padding:6px 12px;font-size:.88rem}
+:root:not([data-theme="dark"]) .btn{color:#fff}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn{color:#10131c}:root:not([data-theme="light"]) .btn.alt{color:var(--accent)}}
+:root[data-theme="dark"] .btn{color:#10131c}
+:root[data-theme="dark"] .btn.alt{color:var(--accent)}
+.btn.alt{color:var(--accent)!important;background:transparent}
+.intro{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 18px;margin:14px 0}
+.intro h1{font-size:1.25rem;margin:0 0 4px}
+.intro p{margin:6px 0;color:var(--muted);font-size:.93rem}
+details.nav{background:var(--card);border:1px solid var(--border);border-radius:14px;margin:12px 0;padding:8px 14px}
+details.nav summary{cursor:pointer;font-weight:600;padding:4px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(40px,1fr));gap:6px;margin:10px 0 6px}
+.grid a{display:flex;align-items:center;justify-content:center;height:36px;border-radius:8px;border:1px solid var(--border);text-decoration:none;color:var(--text);font-size:.88rem;font-weight:600;background:var(--bg)}
+.grid a.done{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.grid a.ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.grid a.bad{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
+.grid a.skip{background:var(--warn-soft);border-color:var(--warn);color:var(--warn)}
+.legend{font-size:.8rem;color:var(--muted)}
+h2.sec{margin:28px 0 6px;font-size:1.15rem;padding:10px 14px;border-radius:10px;background:var(--accent-soft);color:var(--accent)}
+.stim{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:12px;padding:14px 16px;margin:18px 0 10px}
+.stim .instr{font-weight:700;margin:0 0 8px}
+.stim h3{margin:8px 0 2px;font-size:1.05rem}
+.stim .src{font-size:.82rem;color:var(--muted);font-style:italic}
+.stim p{margin:8px 0}
+.poem{margin:8px 0;padding-left:4px}
+.fig{background:var(--fig);border:1px dashed var(--fig-border);border-radius:10px;padding:9px 12px;margin:10px 0;font-size:.92rem}
+.fig b{color:var(--accent)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 16px 14px;margin:12px 0}
+.qhead{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.qnum{min-width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
+:root[data-theme="dark"] .qnum{color:#10131c}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .qnum{color:#10131c}}
+.badge{font-size:.78rem;font-weight:700;padding:2px 10px;border-radius:99px;display:none}
+.badge.ok{display:inline-block;background:var(--ok-soft);color:var(--ok)}
+.badge.bad{display:inline-block;background:var(--bad-soft);color:var(--bad)}
+.badge.skip{display:inline-block;background:var(--warn-soft);color:var(--warn)}
+.stem p{margin:6px 0}
+.stem ol,.stem ul{margin:6px 0;padding-left:22px}
+.stem li{margin:3px 0}
+.opts{display:grid;gap:8px;margin-top:12px}
+.opt{display:flex;gap:10px;align-items:flex-start;border:1.5px solid var(--border);border-radius:10px;padding:9px 12px;cursor:pointer;background:var(--bg)}
+.opt:hover{border-color:var(--accent)}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt .l{flex:0 0 26px;height:26px;border-radius:50%;border:1.5px solid var(--muted);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;color:var(--muted)}
+.opt .t{flex:1}
+.opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+.opt.sel .l{background:var(--accent);border-color:var(--accent);color:#fff}
+:root[data-theme="dark"] .opt.sel .l{color:#10131c}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .opt.sel .l{color:#10131c}}
+.locked .opt{cursor:default}
+.locked .opt:hover{border-color:var(--border)}
+.opt.ok{border-color:var(--ok);background:var(--ok-soft)}
+.opt.ok .l{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.bad{border-color:var(--bad);background:var(--bad-soft)}
+.opt.bad .l{background:var(--bad);border-color:var(--bad);color:#fff}
+.opt:focus-within{outline:2px solid var(--accent);outline-offset:2px}
+.expl{margin-top:12px;border-radius:10px;padding:10px 14px;background:var(--fig);border:1px solid var(--fig-border);font-size:.94rem}
+.expl .ans{font-weight:700;margin-bottom:4px}
+.expl .note{margin-top:6px;color:var(--warn);font-size:.88rem}
+table.t{border-collapse:collapse;margin:8px 0;max-width:100%;font-size:.93rem;display:block;overflow-x:auto}
+table.t th,table.t td{border:1px solid var(--border);padding:6px 10px;text-align:left;vertical-align:top}
+table.t th{background:var(--accent-soft)}
+table.t td.c,table.t th.c{text-align:center}
+.frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;line-height:1.1;font-size:.9em;margin:0 2px}
+.frac span:first-child{border-bottom:1px solid currentColor;padding:0 3px}
+.mat{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;line-height:1.15;border-left:2px solid currentColor;border-right:2px solid currentColor;border-radius:4px;padding:0 6px;margin:0 3px}
+.result{background:var(--card);border:2px solid var(--accent);border-radius:16px;padding:18px;margin:14px 0}
+.result h2{margin:0 0 6px}
+.score{font-size:2.4rem;font-weight:800;color:var(--accent);line-height:1.1}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:14px 0}
+.stat{border:1px solid var(--border);border-radius:10px;padding:8px 12px;background:var(--bg)}
+.stat b{display:block;font-size:1.25rem}
+.stat.ok b{color:var(--ok)} .stat.bad b{color:var(--bad)} .stat.skip b{color:var(--warn)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.filters button.on{background:var(--accent);color:#fff}
+.submit-bar{text-align:center;margin:26px 0}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}
+.modal.show{display:flex}
+.modal .box{background:var(--card);border-radius:14px;padding:20px;max-width:420px;width:100%;border:1px solid var(--border)}
+.modal .row{display:flex;gap:10px;justify-content:flex-end;margin-top:14px;flex-wrap:wrap}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <div class="ttl">Kuis TKA Try Out 3</div>
+    <div class="prog"><small id="progText">Terjawab 0 / 60</small><div class="bar"><i id="progBar"></i></div></div>
+    <button class="btn small" id="btnSubmitTop" type="button">Kirim Jawaban</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="intro">
+    <h1>Kuis Try Out 3 TKA 2025/2026 – Kelas IX</h1>
+    <p>Pemerintah Kota Semarang · Dinas Pendidikan Kota Semarang · Bahasa Indonesia (30 butir) dan Matematika (30 butir) – total 60 soal pilihan ganda (A–D).</p>
+    <p>Pilih satu jawaban yang paling tepat pada setiap soal. Kunci jawaban dan pembahasan <b>baru tampil setelah semua jawaban dikirim</b>. Gambar, tabel, dan grafik pada naskah asli ditulis dalam bentuk deskripsi kalimat.</p>
+  </section>
+
+  <div id="resultBox"></div>
+
+  <details class="nav" id="navBox" open>
+    <summary>Daftar soal &amp; navigasi</summary>
+    <div class="grid" id="navGrid"></div>
+    <div class="legend" id="navLegend">Biru = sudah dijawab. Kotak lain = belum dijawab.</div>
+  </details>
+
+  <div id="quiz"></div>
+
+  <div class="submit-bar" id="submitBar">
+    <button class="btn" id="btnSubmit" type="button">Kirim Semua Jawaban</button>
+  </div>
+</main>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="box">
+    <h3 id="mTitle" style="margin:0 0 6px">Kirim jawaban?</h3>
+    <p id="mText" style="margin:0"></p>
+    <div class="row">
+      <button class="btn alt small" id="mCancel" type="button">Kembali</button>
+      <button class="btn small" id="mOk" type="button">Ya, kirim</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===== Helper pembuat HTML ===== */
+const frac=(a,b)=>`<span class="frac"><span>${a}</span><span>${b}</span></span>`;
+const fig=(t)=>`<div class="fig"><b>Deskripsi gambar:</b> ${t}</div>`;
+const figG=(t)=>`<div class="fig"><b>Deskripsi grafik/diagram:</b> ${t}</div>`;
+const tbl=(head,rows,center=false)=>`<table class="t"><thead><tr>${head.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map((c,i)=>`<td${center&&i>0?' class="c"':''}>${c}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+const bs=(head,rows)=>tbl(head,rows.map(r=>[...r,'','']));
+const chk=(arr)=>`<ul style="list-style:none;padding-left:4px">${arr.map(x=>`<li>☐ ${x}</li>`).join('')}</ul>`;
+const mat=(a,b)=>`<span class="mat"><span>${a}</span><span>${b}</span></span>`;
+
+/* ===== Stimulus bersama ===== */
+const S_GERHANA=`<p class="instr">Bacalah dengan cermat teks berikut untuk mengerjakan soal nomor 1 sampai dengan 3!</p>
+<h3>Gerhana Bulan</h3>
+${fig('foto gerhana bulan di atas lanskap gurun — ilustrasi.')}
+<div class="src">Sumber : https://pixabay.com/id/photos/gerhana-bulan-bulan-gurun-lanskap-7599304/</div>
+<p>Gerhana bulan merupakan salah satu fenomena alam yang menarik untuk diamati. Peristiwa ini terjadi ketika fase bulan purnama, yaitu saat bulan berada pada posisi berseberangan dengan matahari (beroposisi). Namun, tidak setiap purnama selalu menimbulkan gerhana bulan.</p>
+<p>Hal tersebut disebabkan oleh kemiringan bidang orbit bulan terhadap bidang ekliptika (lintasan semu matahari). Pada waktu tertentu, bidang orbit bulan akan memotong bidang ekliptika sehingga terbentuk dua titik perpotongan yang disebut node. Gerhana bulan hanya dapat terjadi ketika bulan purnama berada di sekitar titik node tersebut. Pergerakan bulan dari satu fase purnama ke purnama berikutnya memerlukan waktu sekitar 29,53 hari.</p>
+<p>Pada saat gerhana berlangsung, bulan terkadang masih tampak samar. Hal ini terjadi karena sebagian cahaya matahari tetap mencapai bulan setelah dibelokkan oleh atmosfer bumi. Cahaya yang dibelokkan tersebut didominasi spektrum kemerahan, sehingga permukaan bulan dapat terlihat gelap dengan warna merah tua, jingga, atau kecokelatan.</p>
+<p>Gerhana bulan dapat diamati secara langsung dengan mata telanjang tanpa membahayakan mata. Dalam ajaran Islam, umat Islam yang menyaksikan gerhana bulan dianjurkan melaksanakan salat gerhana (salat khusuf).</p>
+<p>Gerhana bulan terjadi ketika bayangan bumi menutupi sebagian atau seluruh permukaan bulan. Kejadian ini terjadi saat bumi berada di antara matahari dan bulan dalam satu garis lurus. Karena sinar matahari terhalang bumi, bayangan bumi jatuh ke permukaan bulan. Fenomena ini hanya dapat diamati dari wilayah bumi yang sedang mengalami malam.</p>
+<div class="src">Dikutip dengan penyesuaian seperlunya dari : /www.detik.com/sulsel/berita/</div>`;
+
+const S_KERIPIK=`<p class="instr">Cermatilah kutipan cerpen berikut untuk mengerjakan soal nomor 4 sampai dengan 6!</p>
+<h3>Keripik Singkong</h3><div class="src">Oleh : Thoha Abil Qasim</div>
+<p>Kripik singkong bumbu balado Asis suguhkan kepada Pak Kades yang tadi pagi baru dilantik. Pak Kades menyempatkan masuk ke rumah Asis yang berada di paling ujung utara dekat pantai. Sebelumnya, Pak Kades hanya menyalami para warga di depan rumahnya masing-masing. Tidak sampai masuk ke dalam. Biasa, agenda di hari pertamanya bersilaturrahim ke seluruh warga desa.</p>
+<p>”Selamat, ya, Pak, semoga Bapak bisa amanah, tidak kurang ajar seperti Pak Kades sebelumnya.” Pak Kades hanya senyum sambil melahap keripik singkong.</p>
+<p>”Kau sudah baca program-program kami?”</p>
+<p>”Eee, belum Pak, tapi aku yakin saja, program Bapak intinya pasti ingin menyejahterakan desa ini.”</p>
+<p>”Oh, tentu saja. Sis, aku lanjut dulu, ya, aku mau siap-siap rapat nanti malam. Terima kasih keripik singkongnya, maaf saya habiskan.”</p>
+<p>”Ah, enggak papa, Pak. Kalau Bapak ingin makan keripik singkong lagi, langsung ke sini saja.”</p>
+<p>Pak Kades tersenyum, lalu pamit. Asis berdiri di depan pintu, menatap punggung Pak Kades yang tidak berotot itu. Ia teringat bisik-bisiknya salah satu warga di waktu coblosan kemarin. Katanya, Pak Kades yang sekarang ini tidak pernah sekolah. Dan sebelumnya memang sempat terdengar desas-desus bahwa Pak Kades itu sebenarnya tidak lolos administrasi pencalonan. Asis sudah mulai curiga, dan tidak yakin dengan Pak Kades.</p>
+<p>Sebelum hari benar-benar gelap, Asis pergi ke kebun singkongnya yang berjarak dua puluh meter dari rumahnya. Ia berjalan kaki sambil membawa karung, dan pikiran tentang Pak Kades. Di tengah perjalanan, ia sesekali mencium bau asin pekat yang dibawa angin dari pantai. Setelah sampai di kebun, asis mulai mencabut satu per satu batang singkong, kemudian mengusap tanah liat yang masih menempel. …</p>
+<div class="src">Dikutip dari : hptts://www.kompas.id/artikel/keripik-singkong?</div>`;
+
+const S_HUJAN=`<p class="instr">Cermatilah teks berikut untuk mengerjakan soal nomor 7 sampai dengan 9!</p>
+<p>(1) Hujan adalah salah satu fenomena alam yang sangat penting bagi kehidupan di bumi. Proses terjadinya hujan melibatkan siklus air dimulai dari penguapan air dari permukaan bumi hingga turun ke tanah dalam bentuk tetesan air. Hujan menjaga keseimbangan ekosistem, menyediakan air untuk makhluk hidup, serta memengaruhi berbagai aktivitas kehidupan manusia.</p>
+<p>(2) Proses terjadinya hujan melalui beberapa tahapani siklus air. Proses pertama terjadinya hujan adalah menguapnya air laut, sungai, danau, serta permukaan bumi lainnya karena sinar matahari. Penguapan juga terjadi melalui proses transpirasi, yaitu penguapan air dari tumbuhan. Uap air ini naik ke atmosfer dan berkumpul di udara.</p>
+<p>(3) Setelah uap air naik ke atmosfer, suhu udara yang lebih dingin di atmosfer menyebabkan uap air tersebut mengalami kondensasi. Kondensasi adalah proses perubahan uap air menjadi titik-titik air kecil membentuk awan. Bila jumlahnya makin banyak akan membentuk awan tebal.</p>
+<p>(4) Awan terbentuk dari hasil kondensasi uap air yang mengapung di atmosfer. Awan-awan yang ringan dan tipis tidak langsung menghasilkan hujan. Namun, saat uap air makin banyak terkondensasi, ukuran awan bertambah besar dan berat sehingga menyebabkan turunnya hujan.</p>
+<p>(5) Proses terakhir adalah presipitasi, yaitu jatuhnya air dari awan ke permukaan bumi dalam bentuk hujan. Titik-titik air di awan akan bergabung menjadi lebih besar dan berat. Ketika tidak mampu ditahan oleh udara, mereka jatuh ke bumi sebagai hujan. Jika suhu di sekitar awan sangat dingin, presipitasi bisa berupa salju atau es.</p>
+<p>(6) Hujan adalah hasil siklus air yang berkesinambungan, terjadi secara alami sebagai bagian dari keseimbangan ekosistem bumi. Hujan berfungsi sebagai penyedia air bagi makhluk hidup dan mengatur iklim dan suhu bumi. Oleh karena itu, menjaga kelestarian sumber air dan hutan sangat penting agar siklus air tetap berjalan dengan baik dan hujan tetap dapat terjadi secara teratur.</p>
+<div class="src">Dikutip dengan penyesuaian dari : https://www.intilampung.com/edu/contoh-teks-eksplanasi-tentanghujan-proses-terjadinya-hujan/</div>`;
+
+const S_SEMUT=`<p class="instr">Bacalah dengan cermat kedua teks berikut!</p>
+<table class="t"><thead><tr><th>Teks 1</th><th>Teks 2</th></tr></thead><tbody><tr>
+<td>Sang semut selalu membanggakan dirinya yang bisa pergi ke tempat ia suka. Bahkan, sang semut kuat mengangkat beban yang lebih besar dari tubuhnya. Sang semut merasa bahwa dirinya adalah binatang yang paling hebat. Si kepompong hanya diam saja mendengar ejekan tersebut.<br><br>Pada suatu pagi sang semut kembali berjalan ke taman itu. Karena hujan, genangan lumpur terdapat dimana-mana. Lumpur yang licin membuat semuttergelincir dan jatuh ke dalam lumpur. Sang semut hampir tenggelam dalam genangan lumpur itu.</td>
+<td>“Begini Baginda. Roti itu memang hamba sisakan separuh sebab hamba khawatir jangan-jangan baginda lupa membuka tutup tabung ini. Jika baginda lupa membukanya, tentu saja hamba masih dapat makan roti setahun lagi. Untunglah baginda tidak lupa. Hamba sangat senang.” Sang raja terkejut mendengar penjelasan si semut kecil di dekat semut.</td></tr></tbody></table>`;
+
+const S_KALI=`<p class="instr">Bacalah kutipan cerpen berikut ini kemudian kerjakan soal nomor 11 dan 12!</p>
+<h3>Senja di Tepi Kali</h3>
+<p>(1) Di tengah kota yang berdesakan, gubuk tua milik Kakek Bandi terasa seperti persembunyian. Dindingnya yang terbuat dari papan kayu telah memutih dimakan usia, dan bau lumpur sungai selalu menjadi aroma khas yang menyambut. Kakek Bandi, seorang pembuat anyaman bambu, sering duduk termangu di teras sembari memandang Kali Ciliwung yang keruh.</p>
+<p>(2) Suatu senja, saat langit dilukis jingga yang menyala, seorang pemuda bernama Rino datang. Ia membawa sebuah laptop usang dan tas ransel penuh buku.</p>
+<p>(3) “Kek, bolehkah saya menumpang sebentar? Saya sedang mencari inspirasi untuk tulisan saya,” pinta Rino. Kakek Bandi hanya tersenyum, senyum yang menyimpan ribuan kisah dari air sungai yang mengalir tak pernah henti.</p>
+<p>(4) Rino duduk, sesekali matanya menerawang ke permukaan sungai yang memantulkan bayangan lampu kota. Ia mengamati Kakek Bandi yang dengan telaten menyayat bilah-bilah bambu.</p>
+<p>(5) Tiba-tiba, Rino bertanya, “Kek, apakah kakek tidak bosan hidup di sini? Tempat ini sepi, dan pemandangannya...” ia ragu melanjutkan, “...berbeda sekali dengan apartemen saya di seberang sana.”</p>
+<p>(6) Kakek Bandi berhenti menganyam. Ia mengambil sebilah bambu yang sudah halus, mengusapnya perlahan. “Nak, di balik kekeruhan ini, ada ketenangan. Di dalam sepi ini, ada suara hati yang tidak akan kau temukan di kebisingan kotamu. Kau tidak hanya butuh inspirasi dari tempat baru, kau butuh merasa,” jawab Kakek Bandi, nadanya lembut tetapi penuh makna.</p>
+<p>(7) Rino terdiam. Ia menutup laptopnya. Ternyata, inspirasi yang ia cari bukan datang dari layar, melainkan dari sudut pandang yang lain.</p>
+<p>…</p>
+<div class="src">Sumber : Koleksi pribadi</div>`;
+
+const S_FBN=`<p class="instr">Bacalah dengan cermat bacaan berikut untuk mengerjakan soal nomor 13 sampai dengan 15!</p>
+<h3>Festival Buku Nasional</h3>
+<p>Pada tanggal 24 hingga 28 September 2025, Jakarta Convention Center menjadi saksi bisu kemeriahan Festival Buku Nasional (FBN) terbesar dalam dekade ini. Acara tahunan ini diselenggarakan oleh Kementerian Pendidikan dan Kebudayaan dengan tujuan untuk meningkatkan indeks literasi masyarakat Indonesia yang terus berkembang.</p>
+<p>Kegiatan hari pertama dimulai dengan upacara pembukaan yang dihadiri oleh penulis-penulis ternama mancanegara dan lokal. Dalam pidato pembukaannya, Menteri Pendidikan menekankan bahwa buku adalah jembatan menuju peradaban masa depan yang lebih baik. Setelah seremoni pemotongan pita, pengunjung mulai memadati ratusan stan penerbit. Tak hanya pameran buku konvensional, festival tahun ini juga menonjolkan zona literasi digital di mana pengunjung bisa mencoba pengalaman membaca buku melalui teknologi Augmented Reality (AR).</p>
+<p>Memasuki hari ketiga, diadakan sesi diskusi panel yang membahas peran kecerdasan buatan dalam dunia kepenulisan. Ruang diskusi penuh sesak oleh mahasiswa dan pelajar yang antusias bertanya mengenai orisinalitas karya di era digital. Selain diskusi, terdapat pula pojok baca gratis bagi anak-anak yang didampingi oleh relawan pendongeng.</p>
+<p>Acara puncaknya terjadi pada malam penutupan, yakni penganugerahan “Penulis Inspiratif 2025”. Penghargaan ini diberikan kepada seorang penulis muda asal pelosok daerah yang berhasil menggerakkan perpustakaan keliling di desanya. Suasana haru menyelimuti ruangan saat ia menerima piala. Festival ini akhirnya resmi ditutup pada pukul 21.00 WIB. Bagi masyarakat, FBN 2025 bukan sekadar ajang jual beli buku, melainkan ruang temu ide dan semangat untuk terus berkarya. Pengunjung pulang dengan membawa tas berisi buku dan harapan baru bagi dunia literasi Indonesia.</p>
+<div class="src">Dikutip dari: news.detik.com dengan penyesuaian seperlunya</div>`;
+
+const S_SUNGAI=`<p class="instr">Bacalah dengan cermat teks berikut untuk mengerjakan soal nomor 16 sampai dengan 18!</p>
+<p>(1) Setiap kali menyeberangi sungai, Sersan Kasim merasakan sesuatu keharuan yang mendenyutkan jantungnya. Seolah-olah ia berpisah dengan sesuatu, sesuatu dalam hidupnya. Makin besar sungai itu, makin besar pula keharuan yang menggetarkan sanubarinya.</p>
+<p>(2) Kini, kembali ia akan menyeberangi sebuah sungai. Sekali ini bukan sungai kecil, melainkan salah satu sungai yang terbesar di Jawa Tengah, Sungai Serayu.</p>
+<p>(3) Sersan Kasim adalah Kepala Regu 3, Peleton 2 dari kompi TNI terakhir yang akan kembali ke daerah operasinya di Jawa Barat. ….</p>
+<p>(4) Jam satu malam cuaca gelap gulita dan murung, hujan turun selembut embun namun cukup membasahkan. Hati-hati Kasim memimpin anak buahnya menuruni tebing yang curam dan licin. Ia sendiri berjalan dengan sangat hati-hati, menggendong bayi pada panggulnya sebelah kiri. Dari bahu kanan bergantung sebuah sten. Hanya samar-samar matanya yang terlatih melihat orang yang berjalan di depannya. Untuk memudahkan penglihatan, tiap-tiap prajurit yang kurang baik penglihatannya, memasang sepotong cendawan yang berpijar pada punggung kawan yang berjalan di depannya.</p>
+<p>…</p>
+<p>(5) Perlahan-lahan Sersan Kasim menuruni tebing yang curam. Ia menggigil dilanda angin pegunungan dari sebelah lembah. Dengan cermat ia perbaiki letak selimut berlapis dua yang menutupi Acep dalam gendongan. Acep, biji matanya, harapan idamannya, setelah kepergian istrinya untuk selamanya satu hari setelah melahirkan Acep. Kemudian, dengan satu gerakan ia usap air hujan pada wajahnya sendiri. Ia menggigil lagi. Iring-iringan sekonyong-konyong berhenti. Prajurit di depannya juga menggigil. Mereka menggigil berdekat-dekatan.</p>
+<p>“Ada pertanyaan?” tanya Komandan Peleton.</p>
+<p>Tidak ada yang menyahut. Samar-samar Sersan Kasim melihat pandangan Komandan tertuju kepadanya.</p>
+<p>“Bagaimana bayimu?” tanya Komandan.</p>
+<p>“Tidur, Pak,” jawab Kasim singkat.</p>
+<p>“Kalau pikiranmu berubah, masih ada waktu untuk menitipkannya pada barisan keluarga.”</p>
+<p>…</p>
+<div class="src">Dikutip dari Cerpen “Sungai” karya Nugroho Notosusanto</div>`;
+
+const S_AKUINGIN=`<p class="instr">Bacalah dengan cermat kutipan puisi berikut untuk menjawab soal nomor 19 sampai dengan 21!</p>
+<h3>Aku Ingin</h3><div class="src">Karya : Sapardi Djoko Damono</div>
+<p class="poem">Aku ingin mencintaimu<br>Dengan sederhana<br>Dengan kata yang tak sempat<br>Diucapkan kayu kepada api<br>Yang menjadikannya abu</p>
+<p class="poem">Aku ingin mencintaimu<br>Dengan sederhana<br>Dengan isyarat yang tak sempat<br>Disampaikan awan kepada hujan<br>Yang menjadikannya tiada</p>`;
+
+const S_BANJIR=`<p class="instr">Bacalah kedua teks berikut untuk menjawab soal nomor 22 sampai dengan 24!</p>
+<table class="t"><thead><tr><th>Teks 1<br>Imbauan Pemerintah di Kota Besar</th><th>Teks 2<br>Laporan Relawan Bencana di Sumatera</th></tr></thead><tbody><tr>
+<td>“Memasuki puncak musim penghujan, warga Semarang dihimbau untuk waspada terhadap potensi banjir rob dan genangan. Pastikan saluran air di depan rumah bersih dari sampah dan segera evakuasi barang elektronik ke tempat yang lebih tinggi jika intensitas hujan meningkat lebih dari tiga jam tanpa henti.”</td>
+<td>“Kondisi di lereng perbukitan Sumatera kian kritis akibat curah hujan ekstrem. Ancaman utama bukanlah genangan air, melainkan tanah longsor yang dapat terjadi tiba-tiba. Warga diminta tidak hanya memantau saluran air, tetapi juga memperhatikan retakan tanah dan suara gemuruh dari arah bukit sebagai tanda evakuasi mandiri.”</td></tr></tbody></table>`;
+
+const S_KERA=`<p class="instr">Bacalah kutipan cerita berikut untuk menjawab soal nomor 25 sampai dengan 27!</p>
+<p>Di ladang Fajar merasa kewalahan mengusir gerombolan kera. Sekalipun sudah membawa ketapel, kera-kera itu tampak tidak menggubrisnya. Ketika dibidik dengan ketapel mereka itu mudah menghindar. Agar bidikannya kena, Fajar membidik dari dekat. Namun, sang kera juga tidak pernah kalah pandai. Mereka sengaja membagi rombongan menjadi beberapa kelompok ... Dengan demikian empunya kebun menjadi kewalahan.</p>
+<p>“Plethaakkk!” Biji ketapel luput mengenai sasarannya. Sasaran utamanya adalah seekor kera muda yang sedang asyik memetik mentimun.</p>
+<p>Fajar terpaksa pontang-panting lari ke sana-kemari untuk mengusir kera. Mereka seperti sengaja mengejek. Kera-kera itu seakan tidak takut dengan ketapel, bila tidak dibidik dari dekat.</p>
+<p>“Waah luput lagi!” seru Fajar tahu bidikannya lolos lagi.</p>
+<p>“Hus! Huuusss! Huss! Teriakannya tak membuat kera-kera itu takut.</p>
+<p>Kera-kera itu hanya akan berlari menjauh sebentar ketika jarak mereka tinggal sejengkal saja. Bahkan ada kera yang agak berani, dia hanya akan beranjak jika Fajar sudah mengambil batu dan melemparkannya ke arah itu.</p>
+<p>“Buk!” Sebuah batu mengenai seekor induk kera yang menggendong anaknya.</p>
+<p>Tampaknya lemparan batu itu tak membuat jera induk kera.</p>
+<p>“Nguk! ... Nguuk! Nguk … Nguuuk!” jerit si kera. Anaknya masih di gendongan, dngan gesit kera itu melompati pematang segera menghilang ke arah hutan.</p>
+<div class="src">Sumber : Pohon dalam Perut, Varuni Dian W.</div>`;
+
+const S_KARAWANG=`<p class="instr">Cermati puisi berikut untuk menjawab soal nomor 28 sampai dengan 30!</p>
+<h3>Karawang-Bekasi</h3><div class="src">Oleh : Chairil Anwar</div>
+<p class="poem">Kami yang kini terbaring antara Karawang-Bekasi<br>tidak bisa teriak “Merdeka” dan angkat senjata lagi<br>Tapi siapakah yang tidak lagi mendengar deru kami,<br>terbayang kami maju dan berdegap hati?<br>Kami bicara padamu dalam hening di malam sepi<br>Jika dada rasa hampa dan jam dinding yang berdetak<br>Kami mati muda. Yang tinggal tulang diliputi debu.<br>Kenang, kenanglah kami<br>Kami sudah coba apa yang kami bisa<br>Tapi kerja belum selesai, belum apa-apa<br>Kami sudah beri kami punya jiwa<br>Kerja belum selesai, belum bisa memperhitungkan arti 4-5 ribu jiwa<br>Kami cuma tulang-tulang berserakan<br>Tapi adalah kepunyaanmu<br>Kaulah lagi yang tentukan nilai tulang-tulang berserakan<br>Ataukah jiwa kami melayang untuk kemerdekaan, kemenangan dan harapan<br>atau tidak untuk apa-apa,<br>Kami tidak tahu, kami tidak lagi bisa berkata<br>Kaulah sekarang yang berkata<br>Kami bicara padamu dalam hening di malam sepi<br>Jika dada rasa hampa dan jam dinding yang berdetak<br>Kenang-kenanglah kami<br>Teruskan, teruskan jiwa kami<br>Menjaga Bung Karno<br>menjaga Bung Hatta<br>menjaga Bung Sjahrir<br>Kami sekarang mayat<br>Berilah kami arti<br>Berjagalah terus di garis batas pernyataan dan impian<br>Kenang, kenanglah kami<br>yang tinggal tulang-tulang diliputi debu<br>Beribu kami terbaring antara Karawang-Bekasi</p>
+<div class="src">Sumber: https://pendidikanindonesia</div>`;
+
+/* ===== Daftar soal ===== */
+const Q=[
+/* ---------- BAHASA INDONESIA ---------- */
+{n:1,intro:S_GERHANA,stem:`<p>Berdasarkan penjelasan teks tersebut, yang dimaksud dengan gerhana bulan adalah ….</p>`,
+ o:["suatu fenomena alam yang sering terjadi dan sering kita jumpai dalam kehidupan sehari-hari","berbeloknya sinar matahari yang masih tersisa menuju arah bulan yang disebabkan oleh atmosfer bumi","fenomena yang terjadi pada sekitar 29,53 hari pergerakan bulan dalam orbitnya sampai ke titik akhir perputarannya","peristiwa yang terjadi saat bulan beroposisi dengan matahari sehingga bayangan bumi menutupi sebagian atau seluruh penampang bulan"],
+ a:'D',why:`Teks menjelaskan bahwa gerhana bulan terjadi pada fase purnama, yaitu ketika bulan beroposisi (berseberangan) dengan matahari, lalu bayangan bumi menutupi sebagian atau seluruh permukaan bulan. Hanya opsi D yang merangkum kedua ciri itu. Opsi A keliru karena gerhana tidak terjadi setiap purnama; B hanya menjelaskan mengapa bulan tampak kemerahan; C hanya menyebut lama siklus purnama.`},
+{n:2,stem:`<p>Pada saat bulan mengorbit, akan ada saat terjadi perpotongan antara bidang orbit bulan dengan bidang ekliptika. Perpotongan ini mengakibatkan ….</p>`,
+ o:["munculnya node","penampakan bulan","berbeloknya sinar matahari","munculnya spektrum cahaya"],
+ a:'A',why:`Paragraf kedua menyatakan bahwa bidang orbit bulan memotong bidang ekliptika sehingga terbentuk dua titik perpotongan yang disebut node.`},
+{n:3,stem:`<p>Perhatikan kalimat-kalimat berikut!</p><ol style="list-style:none;padding-left:0"><li>1) Peristiwa alam ini hanya terjadi saat fase bulan purnama.</li><li>2) Pada titik node inilah terjadi gerhana bulan sebagian.</li><li>3) Kadang penampakan bulan masih dapat terlihat ketika terjadi gerhana bulan.</li><li>4) Bayangan bumi jatuh ke permukaan bulan hanya bisa diamati dari sisi bumi yang sedang mengalami malam.</li></ol><p>Penjelasan dalam teks tersebut yang menunjukkan bahwa gerhana bulan terjadi pada malam hari ditunjukkan oleh kalimat nomor ….</p>`,
+ o:["1) dan 3)","1) dan 4)","2) dan 3)","2) dan 4)"],
+ a:'B',why:`Kalimat 4) menyatakan langsung bahwa gerhana hanya dapat diamati dari sisi bumi yang sedang malam. Kalimat 1) mendukung karena purnama (bulan berseberangan dengan matahari) hanya tampak pada malam hari. Kalimat 2) dan 3) tidak berkaitan dengan waktu terjadinya gerhana.`},
+
+{n:4,intro:S_KERIPIK,stem:`<p>Percakapan Pak Kades dan Asis dalam kutipan cerpen tersebut terjadi di ….</p>`,
+ o:["dekat pantai","sebuah desa","rumah Asis","kebun singkong"],
+ a:'C',why:`Pak Kades masuk ke rumah Asis, disuguhi keripik singkong, lalu berpamitan. Percakapan itu terjadi di rumah Asis. Pantai dan desa hanya lokasi/lingkup yang lebih luas, sedangkan kebun singkong baru didatangi Asis setelah Pak Kades pergi.`},
+{n:5,stem:`<p>Berdasarkan kutipan cerpen tersebut, tentukan Benar atau Salah pernyataan-pernyataan dalam tabel berikut untuk mengerjakan soal di bawah tabel!</p>${bs(['Pernyataan','Benar','Salah'],[["Pak Kades yang baru saja terpilih berkunjung dan singgah ke rumah semua warganya."],["Kepala Desa Asis menyukai kripik singkong balado yang disuguhkan Asis."],["Asis memanen singkongnya pada sore hari setelah kunjungan Kepala Desa ke rumahnya."]])}<p>Berdasarkan pernyataan-pernyataan dalam tabel tabel tersebut, tentukan pilihan jawaban yang benar!</p>`,
+ o:["Benar – Salah – Benar","Benar – Benar – Salah","Salah – Benar – Benar","Salah – Benar – Salah"],
+ a:'C',why:`(1) Salah: pada hari itu Pak Kades umumnya hanya menyalami warga di depan rumah dan tidak masuk; ia hanya singgah ke dalam rumah Asis. (2) Benar: Pak Kades melahap keripik dan memuji suguhannya. (3) Benar: sebelum hari gelap, setelah Pak Kades pergi, Asis ke kebun dan mencabut singkong.`},
+{n:6,stem:`<p>Asis tidak yakin terhadap kemampuan Kepala Desanya yang baru karena ….</p>`,
+ o:["kepala desa tidak dapat membuat program yang menyejahterakan seluruh warganya","tidak ada kata-kata yang disampaikan kepala desa saat bersilaturahmi dengan warga","kepala desa tidak memberikan komentar tentang kripik singkong balado buatan Asis","desas-desus yang beredar bahwa kepala desa terpilih tidak pernah sekolah dan tidak lolos administrasi"],
+ a:'D',why:`Teks menyebut Asis teringat bisik-bisik warga bahwa Pak Kades tidak pernah sekolah dan desas-desus bahwa ia tidak lolos administrasi pencalonan, sehingga Asis curiga dan tidak yakin.`},
+
+{n:7,intro:S_HUJAN,stem:`<p>Titik-titik air yang terkumpul dan menjadi awan tidak selalu mengakibatkan turun hujan. Hal ini disebabkan ….</p>`,
+ o:["uap air naik ke atmosfer mengalami proses kondensasi","uap air sedang berproses menjadi titik-titik air","awan yang terbentuk ringan dan tipis","siklus air berlangsung lebih cepat"],
+ a:'C',why:`Paragraf (4): awan yang ringan dan tipis tidak langsung menghasilkan hujan; hujan baru turun ketika awan membesar dan berat.`},
+{n:8,stem:`<p>Simpulan paragraf ke-6 teks tersebut adalah ….</p>`,
+ o:["Proses terjadinya hujan secara alami yang selanjutnya disebut siklus air","Hujan merupakan proses siklus air yang terjadi secara alami dan tujuan penjelasan terjadinya hujan","Simpulan proses terjadinya hujan, fungsi hujan, dan imbauan untuk menjaga kelestarian air dan hutan","Keseimbangan ekosistem bumi ditentukan oleh turunnya hujan secara periodik dan berkesinambungan"],
+ a:'C',why:`Paragraf (6) memuat tiga hal: hujan sebagai hasil siklus air yang alami (proses), fungsi hujan sebagai penyedia air dan pengatur iklim, serta ajakan menjaga sumber air dan hutan. Opsi C merangkum ketiganya (paragraf penutup/simpulan teks eksplanasi).`},
+{n:9,stem:`<p>Paragraf ke-6 teks tersebut menekankan pentingnya menjaga kelestarian hutan. Apa kaitan langsung hal ini dengan frekuensi hujan di lingkungan tempat tinggal kita?</p>`,
+ o:["Tanpa hutan, hujan akan berubah menjadi salju di daerah tropis.","Hutan yang gundul akan membuat awan menjadi lebih berat dan sering hujan.","Hutan membantu proses transpirasi yang berkontribusi pada ketersediaan uap air.","Hutan berfungsi untuk menghalangi awan agar tidak berpindah ke daerah lain."],
+ a:'C',why:`Paragraf (2) menyebut transpirasi (penguapan air dari tumbuhan) sebagai salah satu sumber uap air. Hutan yang lestari menjaga pasokan uap air sehingga siklus air dan hujan tetap teratur. Opsi lain tidak didukung teks.`},
+
+{n:10,intro:S_SEMUT,stem:`<p>Perbedaan watak tokoh semut pada kedua teks tersebut adalah …</p>`,
+ o:["Teks 1: tokoh semut merasa sangat perkasa, Teks 2: tokoh semut berhati mulia","Teks 1: tokoh semut merasa dirinya yang hebat, Teks 2: tokoh semut berbaik hati","Teks 1: tokoh semut menganggap dirinya paling kuat, Teks 2: tokoh semut menganggap dirinya pahlawan","Teks 1: tokoh semut tidak pernah jatuh, Teks 2: tokoh semut menganggap baginda sebagai yang beruntung dengan bantuanya."],
+ a:'B',why:`Teks 1: semut sombong, selalu membanggakan diri dan merasa dirinya yang paling hebat. Teks 2: semut bersikap sopan, berterima kasih, dan baik hati kepada baginda. Opsi C dan D tidak sesuai isi teks (semut tidak menganggap dirinya pahlawan, dan di Teks 1 ia justru jatuh ke lumpur).`,
+ note:`Opsi A dan B sama-sama mirip; B dipilih karena rumusannya paling dekat dengan teks (merasa dirinya yang hebat vs. berbaik hati).`},
+
+{n:11,intro:S_KALI,stem:`<p>Perhatikan pernyataan-pernyataan berikut!</p><ol style="list-style:none;padding-left:0"><li>1) Di tengah kota yang berdesakan, gubuk tua milik Kakek Bandi terasa seperti persembunyian.</li><li>2) Rino duduk, sesekali matanya menerawang ke permukaan sungai yang memantulkan bayangan lampu kota.</li><li>3) Suatu senja, saat langit dilukis jingga yang menyala, seorang pemuda bernama Rino datang.</li><li>4) Kakek Bandi berhenti menganyam. Ia mengambil sebilah bambu yang sudah halus, mengusapnya perlahan.</li></ol><p>Pernyataan-pernyataan yang menunjukkan penjelasan tentang latar cerita ditunjukkan oleh pernyataan nomor ….</p>`,
+ o:["1) dan 3)","1) dan 4)","2) dan 3)","2) dan 4)"],
+ a:'A',why:`Latar mencakup tempat, waktu, dan suasana. Pernyataan 1) menunjukkan latar tempat (gubuk di tengah kota) dan 3) menunjukkan latar waktu (senja). Pernyataan 2) dan 4) menggambarkan tindakan tokoh (alur/penokohan).`},
+{n:12,stem:`<p>Cermatilah pernyataan-pernyataan berikut!</p><ol style="list-style:none;padding-left:0"><li>1) Janganlah menilai sesuatu hanya dari hal yang bisa dilihat dengan mata.</li><li>2) Seseorang hendaknya rajin bekerja supaya kelak hidup sejahtera dan bahagia.</li><li>3) Air sungai yang tenang dan keruh diperlukan untuk memunculkan inspirasi seseorang.</li><li>4) Perasaan dan suara hati dapat diasah dengan kepekaan terhadap orang lain dan lingkungan.</li></ol><p>Pernyataan tersebut yang menunjukkan nilai-nilai yang terdapat dalam kutipan cerita yang berjudul “Senja di Tepi Kali” ditunjukkan oleh pernyataan nomor ….</p>`,
+ o:["1) dan 3)","1) dan 4)","2) dan 3)","2) dan 4)"],
+ a:'B',why:`Kakek Bandi mengajarkan bahwa di balik kekeruhan ada ketenangan (jangan menilai hanya dari tampilan luar) dan bahwa suara hati/rasa perlu diasah. Pernyataan 2) tidak muncul dalam cerita, dan 3) terlalu harfiah (sungai hanyalah latar, bukan syarat inspirasi).`},
+
+{n:13,intro:S_FBN,stem:`<p>Berdasarkan teks tersebut, tentukan Benar atau Salah pernyataan-pernyataan dalam tabel berikut kemudian kerjakan soal yang ditulis di bawah tabel!</p>${bs(['Pernyataan','Benar','Salah'],[["Festival Buku Nasional 2025 diselenggarakan selama lima hari di Jakarta."],["Teknologi Augmented Reality (AR) disediakan untuk memberikan pengalaman membaca digital bagi pengunjung."],["Diskusi panel pada hari ketiga membahas tentang cara membuat perpustakaan keliling di desa."]])}<p>Pilihan yang tepat untuk untuk pernyataan-pernyataan tersebut adalah ….</p>`,
+ o:["Benar – Salah – Benar","Benar – Benar – Salah","Salah – Benar – Benar","Salah – Salah – Benar"],
+ a:'B',why:`(1) Benar: tanggal 24–28 September berarti lima hari, di Jakarta Convention Center. (2) Benar: zona literasi digital menyediakan pengalaman membaca lewat AR. (3) Salah: diskusi panel hari ketiga membahas peran kecerdasan buatan dalam kepenulisan; perpustakaan keliling adalah kisah penerima penghargaan.`},
+{n:14,stem:`<p>Apa tujuan utama diselenggarakannya Festival Buku Nasional (FBN) 2025 menurut teks tersebut?</p>`,
+ o:["Meningkatkan indeks literasi masyarakat Indonesia.","Meluncurkan teknologi Augmented Reality (AR) terbaru.","Mempromosikan Jakarta Convention Center sebagai pusat budaya.","Memberikan piala penghargaan kepada penulis-penulis mancanegara."],
+ a:'A',why:`Paragraf pertama menyatakan acara diselenggarakan dengan tujuan meningkatkan indeks literasi masyarakat Indonesia.`},
+{n:15,stem:`<p>Siapakah yang menerima penghargaan “Penulis Inspiratif 2025” pada malam penutupan?</p>`,
+ o:["Menteri Pendidikan dan Kebudayaan.","Relawan pendongeng yang bertugas di pojok baca anak.","Mahasiswa yang aktif bertanya dalam sesi diskusi panel.","Penulis muda yang menggerakkan perpustakaan keliling di desanya."],
+ a:'D',why:`Paragraf terakhir: penghargaan diberikan kepada seorang penulis muda asal pelosok daerah yang berhasil menggerakkan perpustakaan keliling di desanya.`},
+
+{n:16,intro:S_SUNGAI,stem:`<p>Cermatilah kalimat-kalimat yang dikutip dari kutipan cerpen tersebut!</p><ol style="list-style:none;padding-left:0"><li>1) Makin besar sungai itu, makin besar pula keharuan yang menggetarkan sanubarinya.</li><li>2) Sersan Kasim adalah Kepala Regu 3, Peleton 2 dari kompi TNI terakhir yang akan kembali ke daerah operasinya di Jawa Barat.</li><li>3) Hati-hati Kasim memimpin anak buahnya menuruni tebing yang curam dan licin. Ia sendiri berjalan dengan sangat hati-hati, menggendong bayi pada panggulnya sebelah kiri.</li><li>4) “Kalau pikiranmu berubah, masih ada waktu untuk menitipkannya pada barisan keluarga.”</li></ol><p>Kalimat-kalimat yang merupakan urutan peristiwa yang membuat Sersan Kasim merasakan kesedihan yang mendalam setiap kali dia melewati sungai tergambar dalam kalimat-kalimat nomor ….</p>`,
+ o:["1) dan 2)","1) dan 3)","2) dan 3)","3) dan 4)"],
+ a:'C',why:`Yang diminta adalah urutan peristiwa (bukan perasaan). Peristiwanya: Kasim memimpin regunya kembali ke daerah operasi (2), lalu menuruni tebing menuju sungai sambil menggendong bayi Acep (3). Kalimat 1) berupa perasaan, dan 4) berupa ucapan komandan.`,
+ note:`Soal ini bergantung pada penafsiran; jawaban ini adalah yang paling konsisten dengan teks yang tersedia.`},
+{n:17,stem:`<p>Berdasarkan kutipan cerpen “Sungai”, cermati pernyataan-pernyataan dalam tabel menyatakan hubungan sebab akibat atas peristiwa yang dialami tokoh utama dalam cerpen atau tidak menyatakan hubungan sebab akibat atas peristiwa yang dialami tokoh utama dalam cerpen, kemudian kerjakan soal yang ditulis di bawah tabel!</p>${bs(['No.','Pernyataan','Benar','Salah'].slice(0,2).concat(['Benar','Salah']),[["1","Sungai Serayu merupakan sungai terpanjang di Jawa Tengah."],["2","Sersan Kasim sangat mencintai bayi Acep karena Acep adalah putra semata wayangnya, harta berharga peninggalan almarhum istrinya."],["3","Komandan Peleton adalah seorang yang tegas dan disiplin dalam memimpin kompi tersebut."]])}<p>Pilihan jawaban yang tepat untuk pernyataan-pernyataan dalam tabel tersebut adalah ….</p>`,
+ o:["Benar – Salah – Benar","Benar – Benar – Salah","Salah – Benar – Salah","Salah – Salah – Benar"],
+ a:'C',why:`(1) Salah: teks hanya menyebut Serayu sebagai salah satu sungai terbesar di Jawa Tengah, bukan yang terpanjang. (2) Benar: Acep adalah “biji mata” dan harapan Kasim setelah istrinya meninggal sehari setelah melahirkan — ada hubungan sebab-akibat. (3) Salah: sifat tegas dan disiplin komandan tidak dinyatakan dalam teks.`},
+{n:18,stem:`<p>Berdasarkan kutipan cerpen “Sungai”, apa yang terjadi pada Acep selanjutnya?</p>`,
+ o:["Acep tetap dibawa oleh Sersan Kasim untuk menyeberang sungai dan selamat.","Acep dirawat oleh barisan keluarga selama Sersan Kasim bertugas memimpin Regu 3.","Acep meninggal dunia dan membuat Sersan Kasim merasakan kesedihan yang mendalam.","Acep dititipkan kepada barisan keluarga sehingga tidak mengganggu Sersan Kasim bergerak."],
+ a:'C',why:`Teks membuka dengan keharuan Kasim setiap kali menyeberangi sungai, seolah berpisah dengan sesuatu yang sangat berharga dalam hidupnya. Petunjuk ini (dan alur cerpen “Sungai”) mengarah pada kematian Acep di sungai, yang menjadi sumber kesedihan mendalam Kasim.`},
+
+{n:19,intro:S_AKUINGIN,stem:`<p>Makna ungkapan “Dengan kata yang tak sempat diucapkan kayu kepada api yang menjadikannya abu” dalam puisi tersebut adalah …</p>`,
+ o:["Sebuah ketulusan yang luar biasa di mana seseorang bersedia memberikan seluruh dirinya hingga habis tanpa perlu banyak bicara.","Cinta yang penuh dengan penyesalan karena banyaknya kata-kata yang tidak sempat tersampaikan.","Hubungan yang bersifat sementara dan rapuh sebagaimana kayu yang mudah terbakar menjadi abu.","Keinginan untuk mengungkapkan perasaan secara jujur sebelum maut memisahkan keduanya."],
+ a:'A',why:`Kayu rela terbakar menjadi abu tanpa sempat berkata apa pun: lambang cinta yang tulus dan berkorban sepenuhnya secara sederhana, tanpa banyak kata. Judul dan kata “sederhana” mendukung tafsir ini, bukan penyesalan atau kerapuhan.`},
+{n:20,stem:`<p>Pernyataan-pernyataan berikut yang secara tepat menginterpretasikan makna bahasa kias dan citraan pada bait kedua puisi tersebut adalah …<br><i>(Jawaban benar lebih dari satu)</i></p><ol style="list-style:none;padding-left:0"><li>1) Citraan “awan kepada hujan” menggambarkan cinta yang tidak memerlukan penegasan verbal karena diwujudkan melalui pengorbanan yang nyata.</li><li>2) Ungkapan “menjadikannya tiada” melambangkan proses perubahan total, di mana subjek cinta rela kehilangan dirinya demi yang dicintai.</li><li>3) Bait tersebut menyiratkan kegagalan komunikasi, karena pesan cinta tidak pernah sampai akibat hilangnya awan sebelum hujan terjadi.</li><li>4) Bahasa kias yang digunakan mencerminkan ketulusan cinta yang mutlak, tanpa tuntutan balasan atau pengakuan keberadaan diri.</li></ol><p>Pernyataan-pernyataan yang benar berdasarkan teks tersebut adalah …</p>`,
+ o:["1), 2), dan 4)","1), 2), dan 3)","2), 3), dan 4)","3), 4), dan 1)"],
+ a:'A',why:`Awan yang “menjadi” hujan adalah pengorbanan nyata tanpa perlu kata (1), “menjadikannya tiada” berarti rela kehilangan diri (2), dan seluruhnya mencerminkan ketulusan mutlak tanpa pamrih (4). Pernyataan 3) keliru karena bait ini bukan tentang kegagalan komunikasi, melainkan cinta yang diwujudkan lewat pengorbanan.`},
+{n:21,stem:`<p>Tentukan Benar (B) atau Salah (S) pada setiap pernyataan berikut berdasarkan makna bahasa kias dan citraan yang digunakan penyair.</p>${bs(['No.','Pernyataan','Benar','Salah'].slice(0,2).concat(['Benar','Salah']),[["1","Citraan pada bait pertama (kayu menjadi abu) mengisyaratkan hubungan yang bersifat merusak (toksik) karena salah satu pihak kehilangan jati dirinya."],["2","Penggunaan majas personifikasi pada “kayu” dan “awan” menegaskan bahwa dalam cinta yang sederhana, keheningan dan tindakan lebih bermakna daripada kata-kata."],["3","Isyarat yang “tak sempat disampaikan awan kepada hujan” melambangkan komunikasi yang melampaui kata-kata, di mana pengorbanan lebih utama daripada pesan verbal"]])}<p>Pernyataan yang benar adalah …</p>`,
+ o:["Benar – Salah – Benar","Salah – Benar – Benar","Benar – Benar – Salah","Benar – Salah – Salah"],
+ a:'B',why:`(1) Salah: puisi menampilkan cinta yang tulus dan sederhana, bukan hubungan toksik. (2) Benar: kayu dan awan “berbicara/bertindak” seperti manusia (personifikasi) untuk menegaskan makna tindakan di atas kata. (3) Benar: isyarat awan yang menjadi hujan melambangkan pengorbanan lebih utama daripada pesan verbal.`},
+
+{n:22,intro:S_BANJIR,stem:`<p>Tentukan Benar (B) atau Salah (S) pada setiap pernyataan berikut berdasarkan pemahaman isi dan perbandingan kedua teks.</p>${bs(['No.','Pernyataan','Benar','Salah'].slice(0,2).concat(['Benar','Salah']),[["1","Tindakan membersihkan saluran air pada Teks 1 dan memantau retakan tanah pada Teks 2 merupakan bentuk kewaspadaan yang sesuai dengan karakteristik ancaman bencana di masing-masing wilayah."],["2","Durasi hujan selama tiga jam dalam Teks 1 dapat dijadikan satu-satunya indikator evakuasi bagi seluruh wilayah, baik di kota besar maupun daerah perbukitan."],["3","Kedua teks menunjukkan bahwa meskipun sama-sama terjadi pada musim penghujan, fokus keselamatan warga bergantung pada pemahaman tanda-tanda alam yang berbeda sesuai kondisi geografis wilayah."]])}<p>Pilihan jawaban yang benar atas pernyataan-pernyataan tersebut adalah ….</p>`,
+ o:["Benar – Salah – Benar","Benar – Benar – Salah","Salah – Salah – Benar","Salah – Benar – Benar"],
+ a:'A',why:`(1) Benar: banjir/genangan di kota → saluran air; longsor di perbukitan → retakan tanah. (2) Salah: indikator tiga jam hanya relevan untuk banjir di kota, tidak bisa dijadikan satu-satunya patokan di semua wilayah. (3) Benar: kedua teks menekankan tanda alam berbeda sesuai kondisi geografis.`},
+{n:23,stem:`<p>Berdasarkan isi kedua teks, perbedaan utama ancaman bencana pada Teks 1 dan Teks 2 adalah ….</p>`,
+ o:["Teks 1 membahas ancaman banjir rob dan genangan, sedangkan Teks 2 membahas ancaman tanah longsor","Teks 1 menekankan retakan tanah dan gemuruh, sedangkan Teks 2 menekankan saluran air dan sampah","Teks 1 membahas kondisi lereng bukit, sedangkan Teks 2 membahas kondisi kota besar","Teks 1 mengimbau evakuasi mandiri, sedangkan Teks 2 menekankan evakuasi barang elektronik"],
+ a:'A',why:`Teks 1 (Semarang) berfokus pada banjir rob dan genangan; Teks 2 (lereng perbukitan Sumatera) berfokus pada tanah longsor. Opsi B, C, dan D menukar atau memutarbalikkan isi kedua teks.`},
+{n:24,stem:`<p>Pernyataan yang sesuai dengan isi kedua teks adalah … <i>(Jawaban lebih dari satu.)</i></p><ol style="list-style:none;padding-left:0"><li>1) Teks 1 menekankan kebersihan saluran air untuk mencegah genangan di permukiman warga</li><li>2) Teks 2 menekankan bahwa genangan air merupakan ancaman utama di wilayah perbukitan</li><li>3) Teks 1 menyarankan evakuasi barang elektronik ke tempat lebih tinggi saat hujan terus meningkat</li><li>4) Teks 2 menyarankan warga mewaspadai retakan tanah dan suara gemuruh sebagai tanda bahaya</li></ol>`,
+ o:["Pernyataan 1) dan 2)","Pernyataan 1) dan 4)","Pernyataan 2) dan 3)","Pernyataan 2) dan 4)"],
+ a:'B',why:`Pernyataan 1) dan 4) sesuai teks. Pernyataan 2) salah karena Teks 2 justru menyatakan ancaman utama bukan genangan air, melainkan tanah longsor. Pernyataan 3) memang ada di Teks 1, tetapi pilihan yang tersedia hanya B yang memasangkan dua pernyataan yang benar-benar sesuai (1 dan 4) tanpa memuat pernyataan salah.`},
+
+{n:25,intro:S_KERA,stem:`<p>Berikut ini adalah usaha Fajar yang pantang menyerah dalam menghadapi gerombolan kera, kecuali ...</p>`,
+ o:["Fajar membawa ketapel untuk mengusir gerombolan kera.","Fajar membidik ketapel dari dekat, karena bidikannya luput dari sasaran.","Fajar membiarkan kera yang menggendong anaknya makan mentimun dan lalu kera pun pergi.","Fajar harus berlari pontang-panting mengusir kera-kera itu dari ladang mentimunnya."],
+ a:'C',why:`Fajar justru melempar batu hingga mengenai induk kera yang menggendong anaknya; ia tidak membiarkannya makan mentimun. Opsi A, B, dan D semuanya merupakan usaha aktif Fajar.`},
+{n:26,stem:`<p>Pernyataan yang sesuai dengan isi kutipan cerita tersebut adalah … <i>(Jawaban lebih dari satu.)</i></p><ol style="list-style:none;padding-left:0"><li>1) Fajar membidik kera dari jarak dekat agar bidikannya lebih tepat sasaran.</li><li>2) Kera-kera langsung kabur dan tidak berani kembali setelah melihat ketapel Fajar.</li><li>3) Kera-kera membagi rombongan menjadi beberapa kelompok agar pemilik kebun kewalahan.</li><li>4) Fajar menunggu kera pergi sendiri karena merasa tidak sanggup mengusir mereka.</li></ol>`,
+ o:["Pernyataan 1) dan 2)","Pernyataan 1) dan 3)","Pernyataan 2) dan 3)","Pernyataan 3) dan 4)"],
+ a:'B',why:`Pernyataan 1) dan 3) sesuai teks: Fajar membidik dari dekat, dan kera sengaja membagi rombongan. Pernyataan 2) salah karena kera tidak takut pada ketapel; 4) salah karena Fajar terus berusaha mengusir.`},
+{n:27,stem:`<p>Tentukan Setuju (S) atau Tidak Setuju (TS) pada setiap pernyataan berikut sesuai isi teks!</p>${bs(['Pernyataan','Setuju','Tidak Setuju'],[["Kera-kera tidak mudah takut karena mampu menghindari bidikan ketapel Fajar."],["Fajar harus berlari pontang-panting karena kera-kera membagi rombongan menjadi beberapa kelompok."],["Lemparan batu membuat induk kera jera sehingga kembali ke ladang dan berhenti mengganggu."]])}`,
+ o:["Setuju, Tidak Setuju, Setuju","Setuju, Setuju, Tidak Setuju","Tidak Setuju, Setuju, Setuju","Tidak Setuju, Tidak Setuju, Setuju"],
+ a:'B',why:`(1) Setuju: kera mudah menghindar dan tidak menggubris ketapel. (2) Setuju: kera membagi rombongan sehingga Fajar kewalahan dan berlari ke sana kemari. (3) Tidak setuju: teks menyatakan lemparan batu tak membuat induk kera jera; ia lari ke hutan sambil menjerit, tidak disebut berhenti mengganggu.`},
+
+{n:28,intro:S_KARAWANG,stem:`<p>Majas yang terkandung dalam larik puisi yang dicetak miring dalam puisi tersebut adalah ….</p><div class="fig"><b>Catatan:</b> penanda cetak miring pada naskah asli tidak terbaca pada berkas sumber sehingga larik yang dimaksud tidak dapat ditampilkan.</div>`,
+ o:["personifikasi","hiperbola","metafora","litotes"],
+ a:'C',why:`Jawaban ini diperkirakan untuk larik “Kami cuma tulang-tulang berserakan”: para pejuang yang gugur diibaratkan langsung sebagai “tulang-tulang” tanpa kata pembanding (seperti/bagai), sehingga termasuk metafora.`,
+ note:`Larik yang dicetak miring tidak tersedia pada berkas, jadi kunci ini berupa perkiraan. Cocokkan dengan kunci resmi bila ada.`},
+{n:29,stem:`<p>Larik puisi karya Chairil Anwar yang menggambarkan pengharapan tokoh untuk dikenang dan dihargai jasa-jasanya adalah …</p>`,
+ o:["Kami yang kini terbaring antara Karawang-Bekasi<br>tidak bisa teriak “Merdeka” dan angkat senjata lagi","Kenang-kenanglah kami<br>Teruskan, teruskan jiwa kami","Kami tidak tahu, kami tidak lagi bisa berkata<br>Kaulah sekarang yang berkata","Menjaga Bung Karno<br>menjaga Bung Hatta<br>menjaga Bung Sjahrir"],
+ a:'B',why:`Larik “Kenang-kenanglah kami / Teruskan, teruskan jiwa kami” secara langsung berisi permintaan agar jasa para pejuang dikenang dan diteruskan. Opsi A menggambarkan keadaan, C menyerahkan penilaian kepada pembaca, D menyebut tokoh yang dijaga.`},
+{n:30,stem:`<p>Tentukan apakah pernyataan berikut sesuai atau tidak sesuai dengan isi puisi!</p>${bs(['Pernyataan','Sesuai','Tidak Sesuai'],[["Tokoh “kami” adalah para pejuang yang sudah gugur dan tidak dapat berperang lagi."],["Puisi ini menceritakan kemenangan pejuang yang pulang dengan bahagia setelah perang."],["Tokoh “kami” meminta generasi penerus untuk mengenang dan meneruskan perjuangan."]])}`,
+ o:["Sesuai, Tidak Sesuai, Sesuai","Sesuai, Sesuai, Tidak Sesuai","Sesuai, Tidak Sesuai, Tidak Sesuai","Sesuai, Sesuai, Tidak Sesuai"],
+ a:'A',why:`(1) Sesuai: “kami” adalah pejuang yang terbaring dan tidak bisa mengangkat senjata lagi. (2) Tidak sesuai: mereka telah mati muda, tidak pulang dengan bahagia. (3) Sesuai: “Kenang, kenanglah kami / Teruskan, teruskan jiwa kami”.`,
+ note:`Opsi B dan D pada naskah bunyinya identik; kunci tetap A karena hanya A yang memuat urutan Sesuai – Tidak Sesuai – Sesuai.`},
+
+/* ---------- MATEMATIKA ---------- */
+{n:31,stem:`<p>Perbandingan uang Any dan Citra adalah 3 : 5. Jika jumlah uang mereka Rp 400.000,00, maka uang Any adalah ….</p>`,
+ o:["Rp 80.000,00","Rp 100.000,00","Rp 150.000,00","Rp 200.000,00"],
+ a:'C',why:`Uang Any = ${frac(3,8)} × Rp 400.000 = Rp 150.000,00.`},
+{n:32,stem:`<p>Perhatikan infografis berikut.</p>${fig('Infografis berjudul “Cerdas Membeli Gadget” yang membandingkan dua toko online yang menjual laptop merk sama.')}${tbl(['','Toko Cahaya Gadget','Toko Sinar Digital'],[['<b>Harga</b>','Rp8.000.000,00','Rp8.000.000,00'],['<b>Diskon</b>','Diskon 30% (+15% dari harga setiap diskon)','Diskon Langsung 43%'],['<b>Ongkir</b>','Free Ongkir','Free Ongkir']])}<p>Dua toko online, “Toko Cahaya Gadget” dan “Toko Sinar Digital”, menjual sebuah Laptop dengan merk yang sama. Pada akhir tahun, keduanya menawarkan promo berbeda seperti yang tertera pada gambar di atas. Bayangkan Anda sebagai calon “Pembeli Cerdas” dalam Belanja Online, yang harus mengambil keputusan yang tepat dalam memilih toko saat akan belanja.</p><p>Berdasarkan infografis dan wacana tersebut, pilih semua pernyataan yang benar dari empat pernyataan di bawah ini.</p>${chk(['(i) Besar nominal diskon laptop di Toko Sinar Digital adalah Rp 3.460.000,00.','(ii) Persentase diskon total yang diberikan oleh Toko Cahaya Gadget adalah 45%.','(iii) Harga pembayaran laptop di Toko Cahaya Gadget setelah double diskon adalah Rp 4.760.000,00.','(iv) Harga bayar Laptop di Toko Sinar Digital lebih murah Rp 200.000.00 dari harga bayar di Toko Cahaya Gadget.'])}<p>Pernyataan yang benar adalah….</p>`,
+ o:["(i) dan (ii)","(i) dan (iii)","(ii) dan (iii)","(iii) dan (iv)"],
+ a:'D',why:`Toko Sinar: diskon 43% × 8.000.000 = Rp 3.440.000 (bukan 3.460.000) → (i) salah; harga bayar Rp 4.560.000. Toko Cahaya (diskon bertingkat 30% lalu 15%): 8.000.000 × 0,70 = 5.600.000; × 0,85 = Rp 4.760.000 → (iii) benar. Diskon total = 40,5% (bukan 45%) → (ii) salah. Selisih harga bayar = 4.760.000 − 4.560.000 = Rp 200.000 → (iv) benar.`},
+{n:33,stem:`<p>Tiga kegiatan rutin A, B, dan C diadakan secara berkala. Kegiatan A diadakan setiap 4 hari, kegiatan B setiap 6 hari, dan kegiatan C setiap 9 hari. Jika ketiga kegiatan tersebut diadakan bersamaan pertama kali pada tanggal 13 Januari 2026, kapankah ketiga kegiatan itu akan diadakan secara bersamaan lagi berikutnya?</p>`,
+ o:["2 Februari 2026","3 Februari 2026","17 Februari 2026","18 Februari 2026"],
+ a:'D',why:`KPK(4, 6, 9) = 36 hari. 13 Januari + 36 hari: 18 hari menuju 31 Januari, ditambah 18 hari lagi → 18 Februari 2026.`},
+{n:34,stem:`<p><b>Berbagi Kebahagiaan</b></p><p>Ibu Salma membagikan bingkisan kepada sanak saudara dan tetangga dekat. Beliau telah menyiapkan beberapa jenis barang untuk dikemas. Stok barang yang telah disiapkan adalah 150 bungkus mie instan, 125 botol sirup, dan 100 kotak kue kering.</p><p>Barang-barang tersebut akan dikemas menjadi beberapa bingkisan, yang setiap bingkisan harus memiliki isi yang sama dari setiap jenis barang dan banyak bingkisan yang dibuat harus maksimal.</p><p>Berdasarkan data dalam wacana tersebut, bagaimana nilai kebenaran dari setiap pernyataan berikut?</p>${bs(['Pernyataan','Benar','Salah'],[["Banyak bingkisan maksimal yang dapat dibagikan dengan isi sama adalah 25 bingkisan."],["Dengan banyak bingkisan maksimal, isi setiap bingkisan adalah 6 bungkus mie instan, 5 botol sirup, dan 4 kotak kue kering."],["Jika Ibu hanya ingin membagikan bingkisan kepada sejumlah orang, sehingga masih tersisa mie instan 10 bungkus dan sirup 5 botol, maka sisa kue kering adalah 6 kotak."]])}<p>Pernyataan yang benar adalah….</p>`,
+ o:["Benar – Salah – Benar","Benar – Benar – Salah","Salah – Benar – Benar","Salah – Benar – Salah"],
+ a:'B',why:`FPB(150, 125, 100) = 25, jadi bingkisan maksimal 25 (pernyataan 1 benar). Isi tiap bingkisan: 150÷25 = 6 mie, 125÷25 = 5 sirup, 100÷25 = 4 kue (pernyataan 2 benar). Pernyataan 3 salah: dengan isi 6 mie, 5 sirup, 4 kue per bingkisan, sisa sirup 5 botol berarti 24 bingkisan terbagi, sehingga sisa mie 150 − 144 = 6 (bukan 10) dan sisa kue 100 − 96 = 4 (bukan 6). Datanya tidak konsisten.`},
+{n:35,stem:`<p>Jarak antara kota A dan kota B pada peta adalah 12 cm. Jika peta tersebut memiliki skala 1: 400.000, jarak sebenarnya antara kedua kota tersebut adalah ....</p>`,
+ o:["4,8 km","48 km","480 km","4.800 km"],
+ a:'B',why:`Jarak sebenarnya = 12 × 400.000 = 4.800.000 cm = 48.000 m = 48 km.`},
+{n:36,stem:`<p><b>Praktikum Pengamatan Perkembangbiakan Amoeba</b></p>${fig('ilustrasi seorang siswi mengamati sampel dengan mikroskop di laboratorium — dekoratif.')}<p>Dalam suatu praktikum Biologi, Rina dan Timnya mengamati perkembangbiakan koloni Amoeba di cawan petri. Pengamatan dilakukan selama dua jam untuk melihat langsung pembelahan biner pada Amoeba. Mula-mula yang diamati ada 5 sel Amoeba. Berdasarkan pengamatan dari awal praktikum, setiap 25 menit dalam saat yang bersamaan Amoeba tersebut membelah diri menjadi dua. Tim Rina harus membuat laporan terkait perubahan banyak Amoeba dalam rentang waktu praktikum itu.</p><p>Berdasarkan wacana tersebut, bagaimana nilai kebenaran setiap data dari “Laporan Hasil Praktikum” Tim Rina pada tabel berikut?</p>${bs(['Pernyataan','Benar','Salah'],[["Pada menit ke–25, terjadi pembelahan Amoeba yang kedua"],["Banyak Amoeba menjadi terjadi 40 pada menit ke–75"],["Di saat praktikum berakhir, banyak sel Amoeba menjadi 5 × 2<sup>5</sup>"]])}<p>Pernyataan yang benar adalah….</p>`,
+ o:["Benar – Salah – Benar","Benar – Benar – Salah","Salah – Benar – Benar","Salah – Benar – Salah"],
+ a:'D',why:`Pembelahan terjadi pada menit 25, 50, 75, 100 (120 menit = 4 kali pembelahan penuh). Menit 25 adalah pembelahan <i>pertama</i> (pernyataan 1 salah). Menit 75 = pembelahan ke-3 → 5 × 2³ = 40 (pernyataan 2 benar). Di akhir praktikum: 5 × 2⁴ = 80, bukan 5 × 2⁵ (pernyataan 3 salah).`,
+ note:`Pada naskah, pernyataan ke-3 tertulis “5 × 25”, yang dimaknai sebagai 5 × 2⁵ (pangkat lima). Jika dibaca 5 × 25 = 125, pernyataan tetap salah, sehingga kunci tidak berubah.`},
+{n:37,stem:`<p>Sebuah mobil menghabiskan 8 liter bahan bakar untuk menempuh jarak 56 km. Jika jarak yang ditempuh 84 km, maka bahan bakar yang diperlukan adalah ….</p>`,
+ o:["9 liter","10 liter","11 liter","12 liter"],
+ a:'D',why:`Perbandingan senilai: 8 ÷ 56 = x ÷ 84 → x = 8 × 84 ÷ 56 = 12 liter.`},
+{n:38,stem:`<p>Suatu Proyek perbaikan jalan harus selesai selama 30 hari dengan pekerja sebanyak 15 orang. Setelah 6 hari pelaksanaan, proyek tersebut dihentikan selama 4 hari karena sesuatu hal. Jika kemampuan bekerja setiap orang dianggap sama dan proyek harus selesai tepat waktu, maka tambahan pekerja yang diperlukan adalah ….</p>`,
+ o:["2 orang","3 orang","12 orang","18 orang"],
+ a:'B',why:`Total pekerjaan = 15 × 30 = 450 orang-hari. Sudah dikerjakan 15 × 6 = 90, sisa 360. Waktu tersisa = 30 − 6 − 4 = 20 hari, sehingga pekerja yang dibutuhkan = 360 ÷ 20 = 18 orang. Tambahan = 18 − 15 = 3 orang.`},
+{n:39,stem:`<p>Untuk membantu korban bencana alam banjir, kelurahan Suka Makmur menggalang dana untuk membeli beras. Dana tersebut dibelikan beberapa beras kemasan kecil berisi 5 kg dan kemasan besar berisi x kg. Untuk pengangkutan ke posko bencana digunakan mobil bak terbuka. Sekali angkut mobil dapat memuat 10 kemasan besar dan 4 kemasan kecil. Untuk mengantar seluruh bantuan mobil harus kembali sebanyak 5 kali. Jika ketika Posko bencana sudah menyalurkan beras sebanyak 180 kg dan sisa masih beras 1.120 kg, maka berat beras dalam setiap kemasan besar adalah ….</p>`,
+ o:["30 kg","24 kg","15 kg","10 kg"],
+ a:'B',why:`Total beras = 180 + 1.120 = 1.300 kg. Beras sekali angkut = 10x + 4 × 5 = 10x + 20, dan 5 kali angkut: 5(10x + 20) = 50x + 100. Maka 50x + 100 = 1.300 → x = 24 kg.`},
+{n:40,stem:`<p><b>Tamasya di Hari Libur</b></p>${fig('ilustrasi dua keluarga di depan loket “TIKET MASUK TAMAN WISATA” — dekoratif.')}<p>Libur sekolah telah tiba. Keluarga Ayahku dan keluarga Paman wisata bersama. Tiket masuk taman wisata dibedakan antara orang dewasa dan anak-anak usia kurang dari 10 tahun. Ayah membeli 3 tiket dewasa dan 3 tiket anak-anak dengan harga Rp 105.000,00 sedangkan paman membeli 2 tiket dewasa dan 1 tiket anak-anak dengan harga Rp 55.000,00.</p><p>Berdasarkan wacana tersebut, tentukan Benar atau Salah untuk setiap pernyataan berikut.</p>${bs(['Pernyataan','Benar','Salah'],[["Harga tiket dewasa di tempat wisata tersebut adalah Rp 20.000,00/tiket"],["Harga tiket anak di tempat wisata tersebut adalah setengah harga tiket dewasa."],["Untuk membeli 3 tiket dewasa dan 2 tiket anak-anak, maka harus membayar Rp 90.000,00"]])}<p>Pernyataan yang benar adalah….</p>`,
+ o:["Benar – Salah – Benar","Benar – Benar – Salah","Salah – Benar – Benar","Salah – Benar – Salah"],
+ a:'A',why:`Misal dewasa = a, anak = k. 3a + 3k = 105 → a + k = 35, dan 2a + k = 55. Selisih: a = 20, k = 15. (1) Benar: Rp 20.000. (2) Salah: 15.000 bukan setengah dari 20.000. (3) Benar: 3 × 20.000 + 2 × 15.000 = Rp 90.000.`},
+{n:41,stem:`<p><b>Ekspresi Aljabar</b></p><p>Dalam matematika, penyederhanaan ekspresi aljabar merupakan langkah krusial untuk memahami karakteristik suatu fungsi atau persamaan. Sebuah ekspresi yang kompleks, seperti perkalian polinomial, sering kali menyembunyikan informasi penting mengenai koefisien variabel, derajat pangkat, hingga nilai konstanta yang menyertainya. Proses penyederhanaan ekspresi aljabar x(x² – 3x + 5) – 3x² (x – 2) dalam bentuk sederhana ax³ + bx² + cx + d, dilakukan dengan mendistribusikan faktor yang di luar kurung dengan semua suku yang berada di dalam kurung, kemudian mengelompokkan suku-suku yang sejenis sehingga dihasilkan ekspresi aljabar paling sederhana.</p><p>Berdasarkan wacana tersebut, pilih semua pernyataan yang benar.</p>${chk(['(i) Nilai a dari hasil penyederhanaan ekspresi aljabar tersebut adalah –2.','(ii) Konstanta setelah dihasilkan bentuk paling sederhana dari ekspresi aljabar tersebut adalah 3.','(iii) Suku bervariabel dengan pangkat variabel tertinggi dari hasil penyederhanaan ekspresi aljabar tersebut adalah –3x³.','(iv) Dari hasil penyederhanaan ekspresi aljabar tersebut, didapatkan nilai: a + b + c + d = 6'])}<p>Pernyataan yang benar adalah….</p>`,
+ o:["(i) dan (iv)","(ii) dan (iii)","(ii) dan (iv)","(iii) dan (iv)"],
+ a:'A',why:`x(x² − 3x + 5) − 3x²(x − 2) = x³ − 3x² + 5x − 3x³ + 6x² = −2x³ + 3x² + 5x + 0. Jadi a = −2, b = 3, c = 5, d = 0. (i) benar; (ii) salah (konstanta = 0); (iii) salah (suku tertinggi −2x³); (iv) benar: −2 + 3 + 5 + 0 = 6.`},
+{n:42,stem:`<p><b>Aplikasi Transportasi Online</b></p><p>Sebuah aplikasi transportasi online menetapkan tarif tetap (biaya buka pintu) sebesar Rp 10.000,00 dan biaya per kilometer sebesar Rp 5.000,00. Jika x menyatakan jarak dalam km dan fungsi f(x) menyatakan total biaya dalam rupiah, sedangkan aplikasi tersebut hanya melayani perjalanan maksimal 20 km, tentukan Benar atau Salah untuk setiap pernyataan berikut.</p>${bs(['Pernyataan','Benar','Salah'],[["Domain fungsi aplikasi adalah: 0 ≤ x ≤ 20"],["Biaya untuk jarak 15 km adalah Rp 85.000,00"],["Range fungsi aplikasi adalah: 0 ≤ ƒ(x) ≤ 110.000"]])}<p>Pernyataan yang benar adalah….</p>`,
+ o:["Benar – Salah – Benar","Benar – Benar – Salah","Salah – Benar – Benar","Salah – Benar – Salah"],
+ a:'B',why:`f(x) = 10.000 + 5.000x. (1) Benar: jarak 0 sampai 20 km. (2) Benar: f(15) = 10.000 + 75.000 = Rp 85.000. (3) Salah: range adalah 10.000 ≤ f(x) ≤ 110.000 (f(0) = 10.000, f(20) = 110.000), bukan mulai dari 0.`},
+{n:43,stem:`<p><b>Sketsa Bangunan Rumah Berpola</b></p>${fig('tiga pola berurutan, bernomor (1), (2), (3), berupa sketsa rumah-rumah yang sambung-menyambung, masing-masing digambar dari ruas-ruas garis lurus. Jumlah rumah (dan ruas garis) bertambah pada setiap pola berikutnya.')}<p>Seorang pemborong menggambar sketsa perumahan yang akan dibangun. Setiap rumah digambar dengan beberapa ruas garis lurus. Ia ingin menggambar beberapa rumah yang sambung menyambung dengan tata perumahan seperti yang terlihat pada gambar di atas.</p><p>Banyak ruas garis pada pola ke–8 adalah ….</p>`,
+ o:["26","41","52","60"],
+ a:'B',why:`Pola yang paling konsisten: rumah pertama terdiri atas 6 ruas garis, dan setiap rumah tambahan (berbagi satu dinding) menambah 5 ruas. Rumus: Uₙ = 5n + 1. Untuk n = 8: 5 × 8 + 1 = 41.`,
+ note:`Gambar pola tidak tersedia pada berkas, jadi aturan pola ini diturunkan dari deskripsi dan pilihan jawaban.`},
+{n:44,stem:`<p>Sebuah kolam berbentuk persegi panjang yang ukuran lebarnya 3 m kurang dari panjangnya. Jika panjangnya adalah x m, dan keliling kolam tidak lebih dari 66 m, maka luas maksimum kolam adalah ….</p>`,
+ o:["180 cm²","210 cm²","270 cm²","300 cm²"],
+ a:'C',why:`Lebar = x − 3. Keliling: 2(x + x − 3) ≤ 66 → 4x − 6 ≤ 66 → x ≤ 18. Luas maksimum saat x = 18: 18 × 15 = 270 (satuan luas sesuai pilihan jawaban pada naskah).`},
+{n:45,stem:`<p><b>Membaca Denah di Map</b></p>${fig('denah jalan berupa sebuah garis horizontal yang dipotong oleh dua garis miring yang sejajar. Pada perpotongan kiri terdapat sudut D₂ dan D₁; pada perpotongan kanan terdapat sudut C₃, C₂, C₄, dan C₁. Titik A dan B menandai tikungan pada ujung bawah masing-masing garis miring.')}<p>Di sebuah kawasan, denah jalan pada Aplikasi Map tampak seperti pada gambar, dengan terdapat beberapa tikungan. Besar sudut setiap tikungan bervariasi, ada yang sama dan ada yang berbeda. Diketahui bahwa besar sudut tikungan A adalah setengah dari besar sudut tikungan B.</p><p>Berdasarkan stimulus dalam literasi, tentukan benar atau salah untuk setiap pernyataan berikut.</p>${bs(['Pernyataan','Benar','Salah'],[["Besar sudut tikungan B adalah 120⁰"],["Besar sudut tikungan C₁ sama dengan besar sudut tikuangan B."],["Besar sudut tikungan D₁ adalah 60⁰"]])}<p>Pernyataan yang benar adalah….</p>`,
+ o:["Benar – Salah – Benar","Benar – Benar – Salah","Salah – Benar – Benar","Salah – Benar – Salah"],
+ a:'A',why:`Sudut A dan B berada di antara dua garis sejajar sehingga saling berpelurus (sepihak): A + B = 180°. Karena A = ½B, maka ½B + B = 180° → B = 120° dan A = 60° (pernyataan 1 benar). Dengan hubungan sudut sejajar, C₁ tidak sama dengan B (besarnya 60°) sehingga pernyataan 2 salah, dan D₁ bersesuaian dengan A sehingga D₁ = 60° (pernyataan 3 benar).`,
+ note:`Gambar tidak tersedia pada berkas; pernyataan 2 dan 3 ditentukan dari deskripsi dan pola jawaban, sehingga perlu dicek dengan kunci resmi.`},
+{n:46,stem:`<p>Perhatikan wacana berikut.</p>${fig('ilustrasi seorang teknisi menaiki tangga yang disandarkan ke tembok untuk memperbaiki lampu jalan. <b>Sketsa:</b> segitiga siku-siku ABC dengan siku-siku di A; sisi AB (mendatar, jarak dasar tangga ke tembok) = 5 m; sisi miring BC (tangga) = 13 m; sisi AC (tegak, tinggi ujung tangga dari tanah) yang dicari.')}<p>Pak Budi adalah seorang teknisi listrik yang sangat memperhatikan keselamatan kerja. Siang ini, ia harus memperbaiki lampu jalan yang dipasang pada sebuah tembok. Untuk mencapai lampu tersebut, Pak Budi menyandarkan sebuah tangga lipat berbahan aluminium ke tembok tersebut. Berdasarkan label pada alat kerjanya, panjang tangga tersebut adalah <b>13 meter</b>. Agar posisi tangga stabil dan tidak mudah tergelincir, Pak Budi mengatur jarak ujung bawah tangga ke tembok sejauh <b>5 meter</b>. Tanpa disadari, posisi tangga, tanah, dan tembok membentuk sebuah <b>segitiga siku-siku</b> yang sempurna.</p><p>Tinggi ujung tangga dari tanah adalah ….</p>`,
+ o:["7 m","8 m","10 m","12 m"],
+ a:'D',why:`Teorema Pythagoras: tinggi = √(13² − 5²) = √(169 − 25) = √144 = 12 m (tripel Pythagoras 5-12-13).`},
+{n:47,stem:`<p><b>Menaksir Lebar Sungai</b></p>${fig('foto/ilustrasi seorang pengamat berdiri di tepi sungai dengan batu besar di seberang. <b>Sketsa pengamatan:</b> sungai digambar dengan garis bergelombang; titik A adalah letak batu di seberang sungai; titik B di tepi sungai tepat di seberang A (AB = lebar sungai); titik C berada pada tepi sungai di sisi pengamat dengan BC = 12 cm; titik E pada tepi sungai dengan CE = 3 cm; titik D adalah posisi pengamat dengan DE = 4 cm; garis lurus dari A melalui C ke D adalah garis pandang pengamat.')}<p>Sekelompok Regu Pramuka akan menaksir lebar sungai. Di seberang sungai ada batu besar dan akan digunakan sebagai acuan menaksir lebar sungai itu. Untuk hal itu, dibuat sketsa pengamatan seperti pada gambar, dengan skala 1 : 100. Titik A adalah letak batu di seberang sungai dan titik D adalah tempat pengamat melihat batu tersebut, dengan ruas garis DA adalah jarak pandangan pengamat ke batu. DE merupakan jarak pengamat ke bibir sungai dan AB adalah lebar Sungai yang akan ditaksir. Berapakah hasil taksiran lebar sungai tersebut?</p><p>Pilih semua pernyataan berikut yang benar.</p>${chk(['(i) ∆ ABC dan ∆ DEC adalah kongruen','(ii) Jarak DC pada gambar adalah 5 cm','(iii) Lebar sungai sebenarnya adalah 16 m','(iv) Jarak sebenarnya dari pengamat ke batu besar di seberang adalah 20 m'])}<p>Pernyataan yang benar adalah….</p>`,
+ o:["(i) dan (ii)","(ii) dan (iii)","(ii) dan (iv)","(iii) dan (iv)"],
+ a:'B',why:`∆ABC dan ∆DEC sebangun (bukan kongruen karena ukurannya berbeda) → (i) salah. DC = √(3² + 4²) = 5 cm → (ii) benar. AB : DE = BC : CE → AB = 4 × 12 ÷ 3 = 16 cm pada gambar; skala 1 : 100 → 1.600 cm = 16 m → (iii) benar. AC = 5 × 12 ÷ 3 = 20 cm, maka DA = DC + CA = 25 cm → 25 m sebenarnya, bukan 20 m → (iv) salah.`},
+{n:48,stem:`<p>Perhatikan gambar berikut.</p>${fig('jaring-jaring bangun ruang yang terdiri atas sebuah persegi panjang di bagian bawah, beberapa persegi panjang/jajargenjang yang terhubung ke sisi-sisinya, dan sebuah segitiga di bagian atas.')}<p>Jaring-jaring bangun apakah gambar di atas?</p>`,
+ o:["Limas segitiga","Limas segi empat","Prisma segitiga","Prisma segi empat"],
+ a:'C',why:`Jaring-jaring tersusun dari persegi panjang (sisi tegak) dan segitiga (alas/tutup). Kombinasi persegi panjang dan segitiga ini merupakan ciri prisma segitiga (3 persegi panjang + 2 segitiga). Limas tidak memiliki sisi persegi panjang yang berjajar sebagai sisi tegak.`,
+ note:`Gambar tidak tersedia pada berkas; jawaban diturunkan dari deskripsi sehingga perlu dicek dengan kunci resmi.`},
+{n:49,stem:`<p><b>Asyiknya Tantangan Bermain Teka-Teki</b></p><p>Dani merupakan anak yang senang menyelesaikan sebuah teka-teki. Suatu hari, ayahnya memberikan tantangan kepada Dani untuk menemukan kunci yang disimpan pada suatu titik koordinat tertentu. Ayah memberi petunjuk tentang lokasi kunci melalui serangkaian langkah transformasi, mulai dari titik A yang berkoordinat (–4,–1), kemudian mengikuti langkah-langkah melalui serangkaian transformasi berikut secara berurutan.:</p><p>(i) Translasi dari titik A oleh translator T = ${mat('–2','3')}, maka Dani sampai di titik A₁.</p><p>(ii) Refkeksi dari titik A₁ terhadap garis x = –2, Dani sampai di A₂.</p><p>(iii) Rotasi 180⁰ searah jarum jam dari titik A₂ dengan pusat O(0, 0), sampailah di A₃.</p><p>(iv) Dilatasi dengan faktor skala 2 dengan pusat O(0, 0) dari titik A₃ maka sampai ke titik A₄ (tempat kunci di simpan).</p><p>Dani memulai petualangannya dengan mengikuti petunjuk Ayahnya, mulai dari titik A dan mengikuti urutan transformasi tersebut.</p><p>Dari stimulus dalam literasi tersebut, pilihlah setiap pernyataan yang benar dari pernyataan-pernyataan berikut.</p>${chk(['(i) Titik koordinat bayangan A dari hasil proses transformasi pertama adalah A₁ (–6, –4)','(ii) Titik bayangan A₁ pada proses transformasi kedua adalah A₂ (2, 2)','(iii) Titik bayangan A₂ pada proses transformasi ketiga adalah A₃ (–2, –2)','(iv) Bayangan akhir dari A₃ adalah lokasi dari penyimpanan kunci di A₄ ( –4, –4)'])}<p>Pernyataan yang benar adalah….</p>`,
+ o:["(i) dan (ii)","(i) dan (iii)","(i), (ii) dan (iii)","(ii), (iii) dan (iv)"],
+ a:'D',why:`Translasi: A(−4, −1) + (−2, 3) = A₁(−6, 2) → pernyataan (i) yang menyebut (−6, −4) salah. Refleksi terhadap x = −2: x′ = 2(−2) − (−6) = 2, y tetap → A₂(2, 2) → benar. Rotasi 180° pusat O: A₃(−2, −2) → benar. Dilatasi faktor 2: A₄(−4, −4) → benar. Jadi (ii), (iii), dan (iv) benar.`},
+{n:50,stem:`<p>Perhatikan gambar berikut.</p>${fig('sebuah persegi panjang berukuran lebar 28 cm dan tinggi 14 cm. Di dalamnya terdapat daerah berarsir berupa setengah lingkaran besar (diameter 28 cm) dengan dua setengah lingkaran kecil yang dipotong dari sisi bawahnya (masing-masing berdiameter 14 cm).')}<p>Luas daerah yang diarsir dari bangun pada gambar adalah …</p>`,
+ o:["154 cm²","308 cm²","468 cm²","682 cm²"],
+ a:'A',why:`Luas setengah lingkaran besar (r = 14): ½ × ${frac(22,7)} × 14² = 308 cm². Dua setengah lingkaran kecil (r = 7) setara satu lingkaran penuh: ${frac(22,7)} × 7² = 154 cm². Luas arsir = 308 − 154 = 154 cm².`,
+ note:`Gambar tidak tersedia pada berkas; hitungan mengikuti deskripsi (setengah lingkaran besar dikurangi dua setengah lingkaran kecil).`},
+{n:51,stem:`<p>Perhatikan gambar berikut.</p>${fig('bangun gabungan berupa persegi panjang berukuran 22 cm × 6 cm dengan sebuah setengah lingkaran di sisi atas bagian kiri; panjang sisi atas persegi panjang di sebelah kanan setengah lingkaran ditandai 8 cm; sisi bawah 22 cm; sisi samping 6 cm.')}<p>Keliling bangun pada gambar adalah ....</p>`,
+ o:["36 cm","64 cm","78 cm","96 cm"],
+ a:'B',why:`Diameter setengah lingkaran = 22 − 8 = 14 cm (r = 7). Keliling = sisi bawah 22 + dua sisi samping (6 + 6) + sisi atas 8 + busur setengah lingkaran (½ × ${frac(22,7)} × 14 = 22) = 22 + 12 + 8 + 22 = 64 cm.`},
+{n:52,stem:`<p><b>Taman Paru-paru Kota</b></p>${fig('Ilustrasi Taman Kota — taman berbentuk persegi panjang dengan panjang 30 meter dan lebar 20 meter. Lampu taman dipasang di sekeliling taman dengan jarak 5 meter antar lampu; di bagian dalam terdapat area rumput, dikelilingi jalan berpaving. Label pada gambar: “Panjang 30 meter” (dua sisi), “Lebar 20 meter”, dan “5 meter” (jarak antar lampu).')}<p>Di kota, taman berfungsi sebagai “Paru-paru Kota”, karena di situlah kita bisa menghirup udara segar, sambil menikmati indahnya bunga-bunga dan kupu-kupu beterbangan, sehingga terasa nyaman dan indah.</p><p>Di Kota Semarang terdapat sebuah taman berbentuk persegi panjang yang memiliki ukuran panjang 30 meter dan lebar 20 meter. Di sekeliling taman tersebut dipasang lampu taman dengan jarak antar lampu sama, yaitu 5 meter. Di bagian dalam terdapat area khusus berbentuk persegi panjang berukuran 28 m x 18 m yang ditanami rumput, sedangkan di bagian luar area berumput itu dibuat jalan berpaving dan ditanami bunga-bunga.</p><p>Berdasarkan stimulus dalam literasi tersebut, tentukan nilai kebenaran dari setiap pernyataan berikut.</p>${chk(['(i) Keliling taman tersebut adalah 50 m','(ii) Banyak lampu yang dibutuhkan untuk mengelilingi taman adalah 20 buah','(iii) Luas taman yang akan ditanami rumput adalah 304 m²','(iv) Luas bagian taman yang dibuat jalan berpaving ditanami bunga adalah 600 m²'])}<p>Pernyataan yang benar adalah….</p>`,
+ o:["(i) dan (ii)","(ii) dan (iii)","(ii) dan (iv)","(iii) dan (iv)"],
+ a:'B',why:`Keliling taman = 2(30 + 20) = 100 m → (i) salah. Lampu = 100 ÷ 5 = 20 buah → (ii) benar. Luas area rumput 28 × 18 = 504 m². Luas jalan berpaving = 600 − 504 = 96 m² → (iv) salah.`,
+ note:`Pernyataan (iii) pada naskah tertulis 304 m², padahal hitungan 28 × 18 = 504 m². Kemungkinan salah ketik. Dari pilihan yang ada, B adalah yang paling mendekati karena hanya (ii) yang benar secara tegas dan (iii) adalah pernyataan yang paling mungkin dimaksudkan benar. Cocokkan dengan kunci resmi.`},
+{n:53,stem:`<p>Perhatikan wacana berikut.</p>${fig('ilustrasi lantai ruangan berkeramik — dekoratif.')}<p>Seorang Kontraktor yang akan mengganti keramik lantai sebuah ruangan, yang berbentuk persegi panjang dengan ukuran 4 m × 3,6 m. Lantai tersebut akan dipasang keramik berbentuk persegi berukuran 40 cm × 40 cm. Jika kontraktor membeli keramik terlalu sedikit, pekerjaan akan terhenti karena kekurangan bahan. Sebaliknya, jika membeli tanpa perhitungan yang tepat, akan terjadi pemborosan biaya atau kekurangan bahan, sehingga kerja anda tidak efektif dan tidak efisien. Di sinilah kemampuan Anda untuk melakukan perhitungan yang cermat akan diuji.</p><p>Dari stimulus dalam wacana tersebut, pilihlah semua pernyataan berikut yang benar.</p>${chk(['(i) Keliling lantai ruangan adalah 15,2 meter','(ii) Luas satu ubin adalah 160 cm²','(iii) Luas lantai ruangan adalah 1.440 cm²','(iv) Dibutuhkan minimal 90 buah keramik untuk menutup seluruh lantai'])}<p>Pernyataan yang benar adalah....</p>`,
+ o:["(i) dan (iv)","(i) dan (iii)","(ii) dan (iii)","(iii) dan (iv)"],
+ a:'A',why:`Keliling = 2(4 + 3,6) = 15,2 m → (i) benar. Luas satu ubin = 40 × 40 = 1.600 cm² → (ii) salah. Luas lantai = 400 × 360 = 144.000 cm² (bukan 1.440 cm²) → (iii) salah. Jumlah keramik = 144.000 ÷ 1.600 = 90 buah → (iv) benar.`},
+{n:54,stem:`<p><b>Peraga Bangun Ruang Sisi Datar</b></p>${fig('dua kubus identik dari mika yang dihimpitkan pada salah satu sisinya sehingga membentuk balok. Ukuran pada gambar: tinggi 10 cm, lebar 10 cm, panjang total 20 cm; setiap rusuk kubus 10 cm.')}<p>Alat peraga matematika bangun ruang sisi datar kubus, terbuat dari bahan mika. Ukuran kedua kubus adalah identik dengan panjang rusuk 10 cm dan ketika keduanya dihimpitkan pada salah satu sisinya, maka akan membentuk sebuah balok seperti pada gambar.</p><p>Tentukan nilai kebenaran dari setiap pernyataan berikut.</p>${bs(['Pernyataan','Benar','Salah'],[["Volume satu kubus peraga adalah 100 cm³"],["Luas mika satu kubus peraga adalah 600 cm²"],["Ketika kedua kubus peraga dihimpitkan seperti pada gambar, luas sisi bangun bagian luar (yang bisa diraba) adalah 1.200 cm²"]])}<p>Pernyataan yang benar adalah….</p>`,
+ o:["Benar – Salah – Benar","Benar – Benar – Salah","Salah – Benar – Benar","Salah – Benar – Salah"],
+ a:'D',why:`(1) Salah: volume kubus = 10³ = 1.000 cm³. (2) Benar: luas permukaan kubus = 6 × 10² = 600 cm². (3) Salah: balok 20 × 10 × 10 memiliki luas permukaan 2(200 + 200 + 100) = 1.000 cm² (bukan 1.200 cm²; 2 × 600 = 1.200 akan menghitung dua sisi yang saling menempel).`},
+{n:55,stem:`<p>Perhatikan gambar berikut.</p>${fig('bangun ruang gabungan berupa balok dengan sebuah limas di atasnya. Ukuran balok: panjang 10 cm, lebar 6 cm, tinggi 7 cm. Tinggi total gabungan balok dan limas adalah 12 cm.')}<p>Berdasarkan gambar, Volum gabungan bangun ruang adalah….</p>`,
+ o:["320 cm³","432 cm³","480 cm³","720 cm³"],
+ a:'C',why:`Dengan balok 10 × 6 × 6 dan limas beralas 10 × 6 setinggi 6 cm (tinggi total 12 cm): V balok = 360 cm³, V limas = ${frac(1,3)} × 60 × 6 = 120 cm³, sehingga V gabungan = 480 cm³.`,
+ note:`Deskripsi gambar pada berkas menyebut tinggi balok 7 cm, yang menghasilkan 420 + 100 = 520 cm³ (tidak ada pada pilihan). Satu-satunya pilihan yang cocok dengan tinggi total 12 cm adalah 480 cm³ (tinggi balok 6 cm). Cocokkan dengan gambar/kunci resmi.`},
+{n:56,stem:`<p><b>Peraga Bangun Ruang Sisi Lengkung</b></p><p>Seorang guru akan mengajarkan materi bangun ruang sisi lengkung gabungan kerucut dan setengah bola yang jari-jarinya sama, dan dihimpitkan seperti pada gambar. Jari-jari setengah bola tersebut 5 cm tinggi tinggi kerucut 12 cm. Untuk membantu memudahkan siswa dalam menerima penjelasan guru, maka dibuat alat peraga bangun ruang tersebut dari bahan mika dengan skala ukuran diperbesar dua kali dari ukuran tersebut.</p>${fig('bangun gabungan berupa kerucut di atas setengah bola, dengan diameter alas 10 cm dan tinggi total 17 cm. Di sebelahnya terdapat foto “Alat Peraga” berbentuk kerucut di atas setengah bola — ilustrasi.')}<p>Dari stimulus dalam wacana tersebut, pilihlah semua pernyataan dibawah ini yang benar (π = 3,14).</p>${chk(['(i) Panjang garis pelukis kerucut pada alat peraga adalah 13 cm','(ii) Luas selimut kerucut sebelum dibuat alat peraga adalah 65π cm²','(iii) Luas permukaan bangun gabungan sebelum dibuat alat peraga adalah 140π cm²',`(iv) Volum gabungan bangun ruang pada alat peraga adalah menjadi ${frac(4400,3)}π cm³`])}<p>Pernyataan yang benar adalah....</p>`,
+ o:["(i) dan (ii)","(i) dan (iii)","(ii) dan (iv)","(iii) dan (iv)"],
+ a:'C',why:`Sebelum diperbesar: r = 5, t = 12, garis pelukis s = √(5² + 12²) = 13 cm. Pada alat peraga (diperbesar 2×), s = 26 cm → (i) salah. Luas selimut awal = πrs = π × 5 × 13 = 65π → (ii) benar. Luas permukaan gabungan awal = selimut kerucut + selimut setengah bola = 65π + 2π × 5² = 115π (bukan 140π) → (iii) salah. Volume awal = ${frac(1,3)}π × 25 × 12 + ${frac(2,3)}π × 125 = 100π + ${frac(250,3)}π = ${frac(550,3)}π; diperbesar 2× → volume 2³ = 8 kali = ${frac(4400,3)}π → (iv) benar.`},
+{n:57,stem:`<p>Perhatikan gambar berikut.</p>${figG('Diagram batang “Curah Hujan (mm)” dengan sumbu tegak 0–200; nilai dibaca dari grafik.')}${tbl(['Bulan','Januari','Februari','Maret','April','Mei','Juni'],[['Curah Hujan (mm)','150','120','180','140','100','70']],true)}<p>Jika pemerintah mengkategorikan ‘Bulan Basah’ sebagai bulan dengan curah hujan di atas rata-rata semester tersebut, bulan mana saja yang termasuk kategori tersebut?</p>`,
+ o:["Semua bulan kecuali Juni","Januari, Februari, dan Maret","Maret dan April saja","Januari, Maret, dan April"],
+ a:'D',why:`Rata-rata = (150 + 120 + 180 + 140 + 100 + 70) ÷ 6 = 760 ÷ 6 ≈ 126,7 mm. Bulan di atas rata-rata: Januari (150), Maret (180), dan April (140). Februari (120) berada di bawah rata-rata.`},
+{n:58,stem:`<p>Di awal tahun ajaran baru, guru BK melakukan penimbangan berat badan siswa. Dari hasil penimbangan sejumlah siswa, hasilnya seperti pada tabel berikut.</p>${tbl(['Berat Badan (kg)','35','36','37','38','39'],[['Frekuensi','7','12','5','8','8']],true)}<p>Berdasarkan data tersebut, pilihlah semua pernyataan berikut yang benar.</p>${chk(['(i) Modus data dari hasil pengukuran itu adalah 12.','(ii) Rata-rata berat badan dari hasil pengukuran itu adalah 36,95','(iii) Median data dari hasil pengukuran adalah 37','(iv) Jangkauan data itu adalah 7'])}<p>Pernyataan yang benar adalah....</p>`,
+ o:["(i) dan (ii)","(ii) dan (iii)","(ii) dan (iv)","(iii) dan (iv)"],
+ a:'B',why:`Jumlah data = 7 + 12 + 5 + 8 + 8 = 40. Modus = 36 kg (frekuensi 12), bukan 12 → (i) salah. Rata-rata = (35×7 + 36×12 + 37×5 + 38×8 + 39×8) ÷ 40 = 1.478 ÷ 40 = 36,95 → (ii) benar. Median = rata-rata data ke-20 dan ke-21; frekuensi kumulatif 7, 19, 24 sehingga keduanya 37 → median 37 → (iii) benar. Jangkauan = 39 − 35 = 4 (bukan 7) → (iv) salah.`},
+{n:59,stem:`<p>Perhatikan gambar grafik berikut.</p>${figG('Diagram garis “Grafik Penjualan Motor” (penjualan Toko A dan Toko B, Januari–Mei; nilai dibaca dari label pada grafik).')}${tbl(['Bulan','JAN','FEB','MART','APRIL','MEI'],[['Toko A','5','10','12','18','20'],['Toko B','12','14','16','15','18']],true)}<p>Diagram garis berikut menunjukkan penjualan Motor Toko A dan Toko B selama 5 bulan. Berdasarkan diagram garis “Perbandingan Grafik Penjualan Motor” tersebut, berapakah selisih rata-rata penjualan motor per bulan antara Toko A dan Toko B selama periode Januari hingga Mei?</p>`,
+ o:["1 unit","2 unit","3 unit","4 unit"],
+ a:'B',why:`Rata-rata Toko A = (5 + 10 + 12 + 18 + 20) ÷ 5 = 65 ÷ 5 = 13 unit. Rata-rata Toko B = (12 + 14 + 16 + 15 + 18) ÷ 5 = 75 ÷ 5 = 15 unit. Selisih = 15 − 13 = 2 unit.`},
+{n:60,stem:`<p>Perhatikan wacana berikut.</p><p>Di dalam kantong terdapat sejumlah permen berwarna warni yang banyaknya berbeda-beda seperti disajikan dalam tabel berikut.</p>${tbl(['Warna Permen','Merah','Kuning','Hijau','Ungu','Biru'],[['Banyak Permen','5','12','8','15','10']],true)}<p>Dilla bereksperimen melakukan beberapa kali pengambilan sebuah permen dari dalam kantong itu dengan mata ditutup, dan setiap pengambilan hasilnya dikembalikan lagi dalam kantong. Dari eksperimen itu, datanya disajikan dalam diagram batang berikut.</p>${figG('Diagram batang “Data Hasil Eksperimen Dilla” dengan sumbu tegak 0–9; nilai dibaca dari grafik.')}${tbl(['Warna','Merah','Kuning','Hijau','Ungu','Biru'],[['Banyak terambil','8','3','6','4','3']],true)}<p>Berdasarkan wacana tersebut, tentukan benar atau salah pernyataan berikut.</p>${bs(['Pernyataan','Benar','Salah'],[["Banyak pengambilan yang dilakukan Dilla dalam eksperimen tersebut adalah 24 kali"],[`Peluang empiris (frekuensi relatif) terambilnya permen hijau dalam dalam eksperimen adalah ${frac(1,6)}`],[`Peluang teoritis dalam setiap pengambilan untuk mendapatkan permen merah adalah ${frac(1,10)}`]])}<p>Pernyataan yang benar adalah….</p>`,
+ o:["Benar – Salah – Benar","Benar – Benar – Salah","Salah – Benar – Benar","Salah – Benar – Salah"],
+ a:'A',why:`(1) Benar: 8 + 3 + 6 + 4 + 3 = 24 pengambilan. (2) Salah: peluang empiris hijau = 6 ÷ 24 = ${frac(1,4)}, bukan ${frac(1,6)}. (3) Benar: total permen = 5 + 12 + 8 + 15 + 10 = 50, sehingga peluang teoritis merah = 5 ÷ 50 = ${frac(1,10)}.`}
+];
+
+/* ===== State & util ===== */
+const KEY='tka-to3-semarang-v1';
+const LET=['A','B','C','D'];
+let answers={}, submitted=false, startT=Date.now(), elapsedMs=0;
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+
+function save(){try{localStorage.setItem(KEY,JSON.stringify({answers,startT}))}catch(e){}}
+function load(){try{const d=JSON.parse(localStorage.getItem(KEY)||'null');if(d&&d.answers){answers=d.answers;startT=d.startT||Date.now()}}catch(e){}}
+function clearSave(){try{localStorage.removeItem(KEY)}catch(e){}}
+
+/* ===== Render ===== */
+function render(){
+  const root=$('#quiz');
+  let html='';
+  Q.forEach(q=>{
+    if(q.n===1) html+=`<h2 class="sec">BAHASA INDONESIA — 30 butir (soal 1–30)</h2>`;
+    if(q.n===31) html+=`<h2 class="sec">MATEMATIKA — 30 butir (soal 31–60)</h2>`;
+    if(q.intro) html+=`<div class="stim">${q.intro}</div>`;
+    html+=`<article class="card" id="q${q.n}" data-n="${q.n}">
+      <div class="qhead"><span class="qnum">${q.n}</span><span class="badge" id="b${q.n}"></span></div>
+      <div class="stem">${q.stem}</div>
+      <div class="opts">${q.o.map((t,i)=>`<label class="opt" data-l="${LET[i]}"><input type="radio" name="q${q.n}" value="${LET[i]}"><span class="l">${LET[i]}</span><span class="t">${t}</span></label>`).join('')}</div>
+      <div class="expl hidden" id="e${q.n}"></div>
+    </article>`;
+  });
+  root.innerHTML=html;
+  $('#navGrid').innerHTML=Q.map(q=>`<a href="#q${q.n}" id="n${q.n}">${q.n}</a>`).join('');
+  $$('.card').forEach(c=>{
+    const n=+c.dataset.n;
+    if(answers[n]){const inp=$(`input[value="${answers[n]}"]`,c);if(inp){inp.checked=true}}
+  });
+  refreshSel();updateProgress();
+}
+function refreshSel(){
+  $$('.card').forEach(c=>{
+    const n=+c.dataset.n;
+    $$('.opt',c).forEach(o=>o.classList.toggle('sel',!submitted&&answers[n]===o.dataset.l));
+  });
+}
+function updateProgress(){
+  const done=Object.keys(answers).length;
+  $('#progText').textContent=`Terjawab ${done} / ${Q.length}`;
+  $('#progBar').style.width=(done/Q.length*100)+'%';
+  if(!submitted) Q.forEach(q=>{$('#n'+q.n).className=answers[q.n]?'done':''});
+}
+
+/* ===== Events ===== */
+document.addEventListener('change',e=>{
+  if(submitted) return;
+  const t=e.target;
+  if(t.matches('input[type=radio]')){
+    const n=+t.name.slice(1);answers[n]=t.value;save();refreshSel();updateProgress();
+  }
+});
+
+/* ===== Submit ===== */
+let modalCb=null;
+function showModal(title,text,okLabel,cb){
+  $('#mTitle').textContent=title;$('#mText').innerHTML=text;$('#mOk').textContent=okLabel;modalCb=cb;
+  $('#modal').classList.add('show');$('#mOk').focus();
+}
+function hideModal(){$('#modal').classList.remove('show');modalCb=null}
+$('#mCancel').onclick=hideModal;
+$('#mOk').onclick=()=>{const cb=modalCb;hideModal();if(cb)cb()};
+$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')hideModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')hideModal()});
+
+function askSubmit(){
+  if(submitted) return;
+  const done=Object.keys(answers).length, left=Q.length-done;
+  const txt=left>0?`Masih ada <b>${left} soal</b> yang belum dijawab. Setelah dikirim, jawaban tidak dapat diubah dan kunci beserta pembahasan akan ditampilkan.`:`Semua soal sudah dijawab. Setelah dikirim, jawaban tidak dapat diubah dan kunci beserta pembahasan akan ditampilkan.`;
+  showModal('Kirim jawaban?',txt,'Ya, kirim',doSubmit);
+}
+$('#btnSubmit').onclick=askSubmit;
+$('#btnSubmitTop').onclick=askSubmit;
+
+function doSubmit(){
+  submitted=true;elapsedMs=Date.now()-startT;
+  let ok=0,bad=0,skip=0,okB=0,okM=0;
+  Q.forEach(q=>{
+    const card=$('#q'+q.n),u=answers[q.n];
+    card.classList.add('locked');
+    $$('input',card).forEach(i=>i.disabled=true);
+    const status=!u?'skip':(u===q.a?'ok':'bad');
+    if(status==='ok'){ok++;q.n<=30?okB++:okM++}else if(status==='bad')bad++;else skip++;
+    $$('.opt',card).forEach(o=>{
+      o.classList.remove('sel');
+      if(o.dataset.l===q.a)o.classList.add('ok');
+      else if(o.dataset.l===u)o.classList.add('bad');
+    });
+    const b=$('#b'+q.n);b.className='badge '+status;
+    b.textContent=status==='ok'?'✔ Benar':(status==='bad'?'✘ Salah':'— Tidak dijawab');
+    const ex=$('#e'+q.n);ex.classList.remove('hidden');
+    ex.innerHTML=`<div class="ans">Jawaban benar: ${q.a}. ${esc(q.o[LET.indexOf(q.a)])}</div>
+      <div style="margin-bottom:4px">Jawaban Anda: <b>${u?u+'. '+esc(q.o[LET.indexOf(u)]):'(tidak dijawab)'}</b></div>
+      <div><b>Alasan:</b> ${q.why}</div>${q.note?`<div class="note">Catatan: ${q.note}</div>`:''}`;
+    $('#n'+q.n).className=status;
+  });
+  const total=Q.length,score=Math.round(ok/total*1000)/10;
+  const mins=Math.floor(elapsedMs/60000),secs=Math.floor(elapsedMs/1000)%60;
+  $('#resultBox').innerHTML=`<section class="result" id="result">
+    <h2>Hasil Kuis</h2>
+    <div class="score">${ok} / ${total} <span style="font-size:1rem;color:var(--muted);font-weight:600">· Nilai ${score.toString().replace('.',',')}</span></div>
+    <div class="stats">
+      <div class="stat ok"><b>${ok}</b>Benar</div>
+      <div class="stat bad"><b>${bad}</b>Salah</div>
+      <div class="stat skip"><b>${skip}</b>Tidak dijawab</div>
+      <div class="stat"><b>${okB} / 30</b>Bahasa Indonesia</div>
+      <div class="stat"><b>${okM} / 30</b>Matematika</div>
+      <div class="stat"><b>${mins}m ${secs}d</b>Waktu pengerjaan</div>
+    </div>
+    <div class="filters">
+      <button class="btn alt small on" data-f="all" type="button">Semua soal</button>
+      <button class="btn alt small" data-f="bad" type="button">Hanya yang salah</button>
+      <button class="btn alt small" data-f="skip" type="button">Hanya yang kosong</button>
+      <button class="btn small" id="btnRetry" type="button">Ulangi Kuis</button>
+    </div>
+  </section>`;
+  $('#navLegend').textContent='Hijau = benar · Merah = salah · Kuning = tidak dijawab.';
+  $('#submitBar').classList.add('hidden');
+  $('#btnSubmitTop').classList.add('hidden');
+  $('#progText').textContent=`Selesai · ${ok} / ${total} benar`;
+  clearSave();
+  $('#result').scrollIntoView({behavior:'smooth',block:'start'});
+  $$('.filters [data-f]').forEach(btn=>btn.onclick=()=>applyFilter(btn.dataset.f,btn));
+  $('#btnRetry').onclick=()=>showModal('Ulangi kuis?','Semua jawaban dan hasil saat ini akan dihapus.','Ya, ulangi',retry);
+}
+function applyFilter(f,btn){
+  $$('.filters [data-f]').forEach(b=>b.classList.toggle('on',b===btn));
+  Q.forEach(q=>{
+    const st=!answers[q.n]?'skip':(answers[q.n]===q.a?'ok':'bad');
+    const show=f==='all'||st===f;
+    const card=$('#q'+q.n);card.classList.toggle('hidden',!show);
+    const prev=card.previousElementSibling;
+    if(prev&&prev.classList.contains('stim'))prev.classList.toggle('hidden',f!=='all');
+  });
+}
+function esc(s){return String(s).replace(/<br>/g,' / ')}
+function retry(){
+  answers={};submitted=false;startT=Date.now();clearSave();
+  $('#resultBox').innerHTML='';
+  $('#submitBar').classList.remove('hidden');
+  $('#btnSubmitTop').classList.remove('hidden');
+  $('#navLegend').textContent='Biru = sudah dijawab. Kotak lain = belum dijawab.';
+  render();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ===== Init ===== */
+load();render();
+</script>
+</body>
+</html>
